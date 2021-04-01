@@ -1,3 +1,18 @@
-## Find your Republic - FY REP
+## 📜 Índice
+- [📝 Sobre](#-sobre)
+- [👾 Tecnologias Utilizadas](#-tecnologias-utilizadas)
+- [💻 Como baixar o projeto](#-como-baixar-o-projeto)
 
-Este repositório é referente ao projeto de desenvolvimento web para a Visão Tecnologias e Sistemas. FY REP será um website para que calouros encontrem sua república com mais facilidade, agilidade e precisão. Projeto em desenvolvimento por uma equipe, ele irá conter conhecimentos compartilhados que serão aplicados em um website.
+## 📝 Sobre 
+Find your Republic - FY REP
+
+
+---
+## 👾 Tecnologias Utilizadas 
+
+
+  ---
+## 💻 Como baixar o projeto 
+
+---
+
