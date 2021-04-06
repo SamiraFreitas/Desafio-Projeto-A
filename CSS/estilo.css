@@ -39,3 +39,7 @@ nav.navbar-transparente{
 .capa{
     text-align: center;
 }
+.d-flex {
+    display: -ms-flexbox!important;
+    display: flex!important;
+}
