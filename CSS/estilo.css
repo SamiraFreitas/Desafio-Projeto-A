@@ -43,3 +43,9 @@ nav.navbar-transparente{
     display: -ms-flexbox!important;
     display: flex!important;
 }
+.h1-font{
+    font-family: Mansalva;
+    font-size: 16px;
+    line-height: 52px;
+    color: #FFFFFF;  
+}
