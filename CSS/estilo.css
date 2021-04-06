@@ -7,13 +7,27 @@ body{
             background-attachment: fixed;
 
 }
-
+/* Barra de navegação*/
 nav.navbar-transparente{
     padding: 15px, opx;
     background: rgba(0, 0, 0, 0.6);
 }
-
+/* Cor da fonte de Barra de navegação*/
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+}
+/* Cor da fonte de Barra de navegação*/
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #7B2CBF;
+}
+/* Cor do botao de Barra de navegação*/
+.navbar-dark .navbar-toggler {
+    color: rgba(255,255,255,.5);
+    border-color: rgba(255,255,255,0.5);
+}
+/* Divisor da Barra de navegação*/
 .divisor{
     width: 1px;
     background:white;
+    margin: 12px 15px;
 }
