@@ -3,13 +3,18 @@ html, body, #home{
   
     height: 100%;
 }
-
+div.someclass {
+    background-size: cover;
+  }
 body{
 
            background:  url(../Imagens/casaComTransparencia\(2\).png),
-                                 url(../Imagens/ruido.png),
-                                 linear-gradient(50deg,#350958, #643f8b);
+                                 linear-gradient(50deg,#350958, #240046);
             background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size:contain;
+            background-position:center;
+            background-size: 100%;
 
 }
 /* Barra de navegação*/
@@ -49,7 +54,7 @@ p{
     line-height: 52px;   
     color: white;
 }
-
+/*
 #quemsomos{
     background:white;
-}
+}*/
