@@ -1,6 +1,16 @@
+/* Layout */
 body{
 
+           background:  url(),
+                                 url(../Imagens/ruido.png),
+                                 linear-gradient(50deg,#350958, #643f8b);
+            background-attachment: fixed;
 
+}
+
+nav.navbar-transparente{
+    padding: 15px, opx;
+    background: rgba(0, 0, 0, 0.6);
 }
 
 .divisor{
