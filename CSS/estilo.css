@@ -1,4 +1,9 @@
 /* Layout */
+html, body, #home{
+  
+    height: 100%;
+}
+
 body{
 
            background:  url(),
@@ -30,4 +35,7 @@ nav.navbar-transparente{
     margin: 12px 15px;
     width: 1px;
     background:white;
+}
+.capa{
+    text-align: center;
 }
