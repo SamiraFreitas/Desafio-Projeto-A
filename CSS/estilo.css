@@ -27,7 +27,7 @@ nav.navbar-transparente{
 }
 /* Divisor da Barra de navegação*/
 .divisor{
+    margin: 12px 15px;
     width: 1px;
     background:white;
-    margin: 12px 15px;
 }
