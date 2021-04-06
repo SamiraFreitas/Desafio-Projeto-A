@@ -6,7 +6,7 @@ html, body, #home{
 
 body{
 
-           background:  url(),
+           background:  url(../Imagens/casaComTransparencia\(2\).png),
                                  url(../Imagens/ruido.png),
                                  linear-gradient(50deg,#350958, #643f8b);
             background-attachment: fixed;
@@ -43,9 +43,13 @@ nav.navbar-transparente{
     display: -ms-flexbox!important;
     display: flex!important;
 }
-.h1-font{
+p{
     font-family: Mansalva;
     font-size: 16px;
-    line-height: 52px;
-    color: #FFFFFF;  
+    line-height: 52px;   
+    color: white;
+}
+
+#quemsomos{
+    background:white;
 }
