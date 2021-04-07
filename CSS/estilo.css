@@ -47,13 +47,48 @@ nav.navbar-transparente{
     display: -ms-flexbox!important;
     display: flex!important;
 }
-p{
+
+@font-face {
     font-family: Mansalva;
-    font-size: 16px;
+    src: url('https://fonts.googleapis.com/css2?family=Mansalva&display=swap');
+}
+
+#p1{
+    font-family: 'Mansalva', cursive;
+    font-size: 20px;
     line-height: 52px;   
     color: white;
 }
-/*
+
 #quemsomos{
-    background:white;
-}*/
+    background: #7B2CBF;
+    height: 30%;
+    max-height: 170px;
+}
+
+#tabelaQuemSomos{
+    
+    width: 100%;
+    border: none;
+}
+
+#tituloQuemSomos{
+
+    font-family: 'Mansalva', cursive;
+    text-align: center;
+    font-size: 25px;
+    color: #FF8500;
+    top: 10px;
+
+}
+
+#DescricaoQuemSomos{
+
+    font-family: 'Mansalva', cursive;
+    text-align: center;
+    font-size: 15px;
+    color: white;
+    top: 10px;
+
+}
+
