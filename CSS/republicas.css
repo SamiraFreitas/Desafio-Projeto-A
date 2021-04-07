@@ -53,21 +53,6 @@ p{
     line-height: 52px;   
     color: white;
 }
-/*.grid-container {
-    display: grid;
-    background-color: aliceblue;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    gap: 50px 0px;
-    grid-template-areas:
-      ". . . . . . . . ."
-      ". . . . . . . . ."
-      ". . . . . . . . ."
-      ". . . . . . . . ."
-      ". . . . . . . . .";
-  }*/
-  
-
 /*
 #quemsomos{
     background:white;
