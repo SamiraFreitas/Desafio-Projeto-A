@@ -31,7 +31,7 @@ html, body, #home{
     }
     
     .divisor{
-    margin: 12px 15px;
+    margin: 10px 10px;
     width: 1px;
     background:white;
     }
@@ -47,7 +47,7 @@ html, body, #home{
     
     #p1{
     font-family: 'Mansalva', cursive;
-    font-size: 20px;
+ 
     line-height: 52px; 
     color: white;
     }
