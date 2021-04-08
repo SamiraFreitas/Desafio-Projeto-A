@@ -5,7 +5,7 @@ html, body, #home{
 }
 
 body{
-
+            /*Inserção da imagem no fundo e a cor roxa*/
            background:  url(../Imagens/casaComTransparencia\(2\).png),
                                  linear-gradient(50deg,#350958, #240046);
             background-attachment: fixed;
@@ -16,41 +16,54 @@ body{
             background-size: 100%;
 
 }
+
+/*Fontes Importadas para o site*/
+@font-face {
+    font-family: Mansalva;
+    src: url('https://fonts.googleapis.com/css2?family=Mansalva&display=swap');
+}
+
+@font-face {
+    font-family: Pixel;
+    src: url('../Fonte/Pixel.otf');
+}
+
 /* Barra de navegação*/
 nav.navbar-transparente{
     padding: 15px, opx;
     background: rgba(0, 0, 0, 0.6);
 }
+
 /* Cor da fonte de Barra de navegação*/
 .navbar-dark .navbar-nav .nav-link {
     color: white;
 }
+
 /* Cor da fonte de Barra de navegação*/
 .navbar-dark .navbar-nav .nav-link:hover {
     color: #7B2CBF;
 }
+
 /* Cor do botao de Barra de navegação*/
 .navbar-dark .navbar-toggler {
     color: rgba(255,255,255,.5);
     border-color: rgba(255,255,255,0.5);
 }
+
 /* Divisor da Barra de navegação*/
 .divisor{
     margin: 12px 15px;
     width: 1px;
     background:white;
 }
+
 .capa{
     text-align: center;
 }
+
 .d-flex {
     display: -ms-flexbox!important;
     display: flex!important;
-}
-
-@font-face {
-    font-family: Mansalva;
-    src: url('https://fonts.googleapis.com/css2?family=Mansalva&display=swap');
 }
 
 #p1{
@@ -60,35 +73,28 @@ nav.navbar-transparente{
     color: white;
 }
 
-#quemsomos{
-    background: #7B2CBF;
-    height: 30%;
-    max-height: 170px;
-}
-
-#tabelaQuemSomos{
+#QuemSomos{
     
+    background: #7B2CBF;
     width: 100%;
     border: none;
+    font-family: 'Mansalva', cursive;
+    text-align: center;
 }
 
 #tituloQuemSomos{
 
-    font-family: 'Mansalva', cursive;
-    text-align: center;
     font-size: 25px;
     color: #FF8500;
-    top: 10px;
+    padding-top: 30px;
 
 }
 
-#DescricaoQuemSomos{
-
-    font-family: 'Mansalva', cursive;
-    text-align: center;
+.DescricaoQuemSomos{
+ 
     font-size: 15px;
     color: white;
-    top: 10px;
+    padding-bottom: 30px;
 
 }
 
