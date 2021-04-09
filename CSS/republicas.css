@@ -74,5 +74,8 @@ p{
 
 .Bloco{
     background: #370066;
-    background-image: src("Imagens/SVG LOGO.svg")
+}
+
+.card{
+    background: #FF9E00;
 }
