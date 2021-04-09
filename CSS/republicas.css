@@ -66,3 +66,8 @@ p{
     border: 2px solid blue;
 
 }
+
+.Borda-img{
+    margin:10px;
+    border: 2px solid rgb(26, 0, 48);
+}
