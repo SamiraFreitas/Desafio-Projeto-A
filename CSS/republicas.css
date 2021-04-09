@@ -48,7 +48,7 @@ nav.navbar-transparente{
     display: flex!important;
 }
 p{
-    font-family: Mansalva;
+    font-family: Pixel;
     font-size: 16px;
     line-height: 52px;   
     color: white;
@@ -71,3 +71,4 @@ p{
     margin:10px;
     border: 2px solid rgb(26, 0, 48);
 }
+
