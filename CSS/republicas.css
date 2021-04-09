@@ -68,8 +68,9 @@ p{
 }
 
 .Borda-img{
-    margin:10px;
-    border: 2px solid rgb(26, 0, 48);
+    margin:20px;
+    border: 10px solid #370066;
+    
 }
 
 .Bloco{
@@ -79,3 +80,11 @@ p{
 .card{
     background: #FF9E00;
 }
+
+#p1{
+    font-family: 'Mansalva', cursive;
+ 
+    line-height: 52px; 
+    color: white;
+}
+
