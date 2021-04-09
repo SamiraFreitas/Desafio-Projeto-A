@@ -39,7 +39,7 @@
               <a class="nav-link " href="index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link " href="">Quem somos</a>
+              <a class="nav-link " href="index.html#quemsomos">Quem somos</a>
             </li>
             <li class="nav-item">
               <a class="nav-link " href="republicas.html">Republicas</a>
@@ -62,25 +62,58 @@
   <!-- Fim do Cabecalho-->
 
 
-    <form class="form-signin">
-      <img class="mb-4" src="Imagens/SVG LOGO.svg" alt="" width="200" height="200">
-      <h1 class="h3 mb-3 font-weight-normal"><font color="#FF9E00">Inscreva-se</h1></font>
-      <label for="inputEmail" class="sr-only">Endereço de email</label>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email" required="" autofocus="">
-      <label for="inputEmail" class="sr-only">Nome</label>
-      <input type="text" id="inputNome" class="form-control" placeholder="Nome" required="" autofocus="">
-      <label for="inputPassword" class="sr-only">Senha</label>
-      <input type="Password" id="inputPassword" class="form-control" placeholder="Senha" required="">    
-      <label for="inputConfirmPassword" class="sr-only">ConfirmSenha</label>
-      <input type="Password" id="inputCPassword" class="form-control" placeholder="Confirme a senha" required="">
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"><font color="#FF9E00">Aceitar Termos</font>
-        </label>
+    <!-- Inicio da seção login-->
+  <section id="login" class="d-flex">
+    <div class="container align-self-center">
+      <div class="row d-flex justify-content-center">
+        <form class="form-signin text-center shadow">
+
+          <img class="mb-4" src="./Imagens/SVG LOGO.svg"  alt=""
+            width="100%">
+          <h1 class="h3 mb-3 font-weight-normal" style="color: #FF9E00">
+            Cadastro
+          </h1>
+          <label for="inputNome" class="sr-only">
+            Nome
+          </label>
+          <input type="text" id="inputEmail" class="form-control" placeholder="Nome" required autofocus>
+          <label for="inputEmail" class="sr-only">
+            E-mail
+          </label>
+          <input type="email" id="inputEmail" class="form-control" placeholder="E-mail" required autofocus>
+          <label for="inputPassword" class="sr-only">
+            Senha
+          </label>
+          <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required>
+          <label for="inputPassword" class="sr-only">
+            Confirmar Senha
+          </label>
+          <input type="password" id="inputPassword" class="form-control" placeholder="Confirmar Senha" required>
+
+          
+          <!-- <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me"> 
+                        Lembrar-me
+                    </label>
+                </div> -->
+          <div class="checkbox mb-3">
+            <label>
+              <input type="checkbox" value="remember-me"><font color="#FF9E00">Aceitar Termos</font>
+            </label>
+          </div>
+          <button class="btn btn-lg btn-primary btn-block botao" style="border: none;" type="submit">
+            Continuar
+          </button>
+          <p class="mt-5 mb-3 text-muted">
+            &copy; Fy Rep 2021
+          </p>
+
+        </form>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Cadastrar</button>
-      <p class="mt-5 mb-3 text-muted">© Fy Rep 2021</p>
-    </form>
+    </div>
+
+  </section>
   
     
 </body></html>

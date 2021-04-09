@@ -11,14 +11,19 @@ body {
 }
 
 .form-signin {
+  width: 100%;
+  max-width: 330px;
   padding: 15px;
+  padding: 20px;
   margin: auto;
-  height: auto;
   background-color: #63009c;
+  border-radius: 15px;
 }
 
 .form-signin .checkbox {
+  padding: 10px;
   font-weight: 400;
+  float: left;
   
 }
 .form-signin .form-control {
@@ -35,14 +40,13 @@ body {
   z-index: 2;
   
 }
-.form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+.form-signin input {
+  border-radius: 5px;
+  border-color: #63009c;
   
-}
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+}.botao {
+  margin-top: 2px;
+  border-radius: 5px;
+  border-color: #63009c;
+  
 }

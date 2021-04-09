@@ -55,6 +55,12 @@ html, body, #home{
     background: #7B2CBF;
   
     }
+
+    #contquemsomos{
+        padding-top: 1%; 
+        padding-bottom: 3%;       
+        }
+
     #rodape{
     background: #240046;
     }
