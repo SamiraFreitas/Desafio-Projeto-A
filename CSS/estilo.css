@@ -13,7 +13,7 @@ html, body, #home{
     
     /* Barra de navegacao */
     nav.navbar-transparente{
-    padding: 15px, 0px;
+    padding: 10px, 0px;
     background: rgba(0, 0, 0, 0.6);
     }
     
@@ -31,7 +31,7 @@ html, body, #home{
     }
     
     .divisor{
-    margin: 10px 10px;
+    margin: 15px 15px;
     width: 1px;
     background:white;
     }
@@ -58,7 +58,7 @@ html, body, #home{
 
     #contquemsomos{
         padding-top: 1%; 
-        padding-bottom: 3%;       
+        padding-bottom: 4%;       
         }
 
     #rodape{
