@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <!-- Meta tags Obrigatórias -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <!-- Estilo Costumizado -->
+
+  <link rel="stylesheet" type="text/css" href="CSS/republicas.css">
+  <title>FYREP- Find Your Rep Home</title>
+  <link rel="icon" href="Imagens/SVG CASINHA.svg">
+
+</head>
+
+<body>
+
+  <!-- Inicio do Cabecalho-->
+  <header>
+    <%- include ("../partials/nav.ejs") %>
+  </header>
+  <!-- Fim do Cabecalho-->
+
+  <!-- Inicio da seção Home -->
+  <section id="republicas" class="d-flex">
+    <!--Inicio do Home-->
+    <div class="container align-self-center">
+      <div class="row capa ">
+        <!--Logo e slogan -->
+        <div class="col-md-12 ">
+
+          <br>
+          <h5 class="titulo" style="color: #FF8500;"> FIND YOUR REP <i class="fas fa-search" tyle="color: #FF8500;"></i>
+          </h5>
+          <br>
+
+          <div class="peruano">
+            <div class="card-columns">
+
+              <% results.forEach(function(r) { %>
+                <div class="card">
+                  <img class="card-img-top" src="https://source.unsplash.com/random/600x450">
+                  <div class="card-body">
+                    <h4 class="card-title">
+                      <%= r.name %>
+                    </h4>
+                    <h6 clas="card-subtitle">
+                      <%= r.id %>
+                    </h6>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sapien dui,
+                      feugiat et lorem quis, fringilla maximus nisl. Vivamus sed est pulvinar, aliquet purus ut, dictum
+                      elit.</p>
+                    <a class="btn btn-outline-info" href="">Leia mais</a>
+                  </div>
+                </div>
+
+
+                <% }); %>
+            </div>
+          </div>
+
+  </section>
+  <!-- Fim da seção Home-->
+
+  <footer id="rodape">
+    <!-- inicio RODAPE -->
+    <div class="row">
+
+      <div class="col-md-4">
+        <img src="Imagens/SVG CASINHA.svg" width="200">
+      </div>
+
+    </div>
+  </footer>
+
+  <!--/fim RODAPE -->
+
+  <!-- JavaScript (Opcional) -->
+  <!--jQuery primeiro, depois Popper.js, depois Bootstrap JS-->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

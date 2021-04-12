@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!-- Estilo Costumizado -->
+    
+    <link rel="stylesheet" type="text/css" href="CSS/estilo.css">
+    <title>FYREP- Find Your Rep Home</title>
+    <link rel="icon" href="Imagens/SVG CASINHA.svg">
+    
+    </head>
+<body>
+  <%- include ("../partials/header.ejs") %>
+
+<div class="container">
+<h2>Database Results</h2>
+
+<div class="card-columns">
+  <% results.forEach(function(r) { %>
+  <div class="card">
+    <img class="card-img-top"src="https://drive.google.com/uc?id=1GO5PJ15TkiDIiilA_5DmOPYq8WXvGwqt">
+    <div class="card-body">
+      <h4 class="card-title"><%= r.name %></h4>
+      <h6 clas="card-subtitle"><%= r.id %></h6>
+      <p  class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sapien dui, feugiat et lorem quis, fringilla maximus nisl. Vivamus sed est pulvinar, aliquet purus ut, dictum elit.</p>
+      <a class="btn btn-outline-info"href="">Leia mais</a>
+    </div>
+  </div>
+    
+    <% }); %>
+</div>
+
+</div>
+
+</body>
+</html>
