@@ -1,86 +1,70 @@
 html, body, #home{
-  
     height: 100%;
-}
-div.someclass {
-    background-size: cover;
-  }
-body{
-
-           
-            background-color: #240046;                  
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            background-size:contain;
-            background-position:center;
-            background-size: 100%;
-
-}
-/* Barra de navegação*/
-nav.navbar-transparente{
-    padding: 15px, opx;
+    overflow-x: hidden;
+    }
+    body{
+    background-color: #240046;
+    background-repeat: no-repeat;
+    }
+    /* Barra de navegacao */
+    nav.navbar-transparente{
+    padding: 15px, 0px;
     background: rgba(0, 0, 0, 0.6);
-}
-/* Cor da fonte de Barra de navegação*/
-.navbar-dark .navbar-nav .nav-link {
+    }
+    .navbar-dark .navbar-nav .nav-link {
     color: white;
-}
-/* Cor da fonte de Barra de navegação*/
-.navbar-dark .navbar-nav .nav-link:hover {
+    }
+    .navbar-dark .navbar-nav .nav-link:hover {
     color: #7B2CBF;
-}
-/* Cor do botao de Barra de navegação*/
-.navbar-dark .navbar-toggler {
+    }
+    .navbar-dark .navbar-toggler {
     color: rgba(255,255,255,.5);
     border-color: rgba(255,255,255,0.5);
-}
-/* Divisor da Barra de navegação*/
-.divisor{
-    margin: 12px 15px;
+    }
+    .divisor{
+    margin: 10px 10px;
     width: 1px;
     background:white;
-}
-.capa{
+    }
+    /* Home */
+    .capa{
     text-align: center;
-}
-.d-flex {
-    display: -ms-flexbox!important;
-    display: flex!important;
-}
-p{
-    font-family: Pixel;
-    font-size: 16px;
-    line-height: 52px;   
+    }
+    /* Fontes adicionais*/
+    @font-face {
+    font-family: Mansalva;
+    src: url('https://fonts.googleapis.com/css2?family=Mansalva&display=swap');
+    }
+    #p1{
+    font-family: 'Mansalva', cursive;
+    line-height: 52px; 
     color: white;
-}
-/*
-#quemsomos{
-    background:white;
-}*/
-
-.peruano{
-   
-    margin:10px;
-    margin-top: 100px;
+    }
+    #quemsomos{
     background: #7B2CBF;
-    border: 2px solid blue;
-
-}
-
-.Borda-img{
-    margin:20px;
-    border: 5px solid #370066;
+    }
     
-}
-
-.Bloco{
-    background: #370066;
-}
-
-.card{
-    background: #FF9E00;
-}
-
-
-
-
+    #contquemsomos{
+    padding-top: 1%; 
+    padding-bottom: 3%; 
+    }
+    
+    #rodape{
+    background: #240046;
+    }
+    
+    .titulo{
+    font-family: 'Mansalva', cursive;
+    text-overflow: ellipsis;
+    margin:10px;
+    margin-top: 80px;
+    border: 1px solid red;
+    }
+    
+    .peruano{
+    
+    margin:10px;
+    margin-top: 80px;
+    border: 1px solid red;
+    }
+    
