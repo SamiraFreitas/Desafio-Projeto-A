@@ -14,7 +14,7 @@ express()
   .get('/republicas', async (req,res)=>{//conecta o banco de dados a página de republicas
     try{
     const client = await pool.connect();//conecta o banco de dados
-    const result = await client.query('SELECT * FROM test_table');//seleciona tudo da tabela de teste
+    const result = await client.query('SELECT * FROM republicas');//seleciona tudo da tabela de teste
     const results = 
       {'results':(result)?
       result.rows:
