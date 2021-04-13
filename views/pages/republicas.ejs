@@ -56,8 +56,7 @@
                       <%= r.rua %>
                     </h6>
                     <p class="card-text">
-                      Trote<input type="checkbox" disabled="true" checked = "<% r.trote %>">
-                      Status<input type="checkbox" disabled="true" checked = "false">
+                      trote <% r.trote ? %> ✔ <% : %> ✘ <% ; %>
                     </p>
                     <a class="btn btn-outline-info" href="">Leia mais</a>
                   </div>
