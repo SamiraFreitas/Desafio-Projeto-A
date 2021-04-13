@@ -1,4 +1,3 @@
-const cool = require('cool-ascii-faces');
 const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
@@ -9,29 +8,25 @@ express()
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
-  .get('/',(req,res)=>res.render('pages/index'))
-  .get('/index',(req,res)=>res.render('pages/index'))
-  .get('/inscreva-se',(req,res)=>res.render('pages/inscreva-se'))
-  .get('/login',(req,res)=>res.render('pages/login'))
-  //.get('/republicas',(req,res)=>res.render('pages/republicas'))
-  .get('/republicas', async (req,res)=>{
+  .get('/',(req,res)=>res.render('pages/index'))//renderiza a página home
+  .get('/inscreva-se',(req,res)=>res.render('pages/inscreva-se'))//renderiza página escreva
+  .get('/login',(req,res)=>res.render('pages/login'))//renderiza página login
+  .get('/republicas', async (req,res)=>{//conecta o banco de dados a página de republicas
     try{
-    const client = await pool.connect();
-    const result = await client.query('SELECT * FROM test_table');
+    const client = await pool.connect();//conecta o banco de dados
+    const result = await client.query('SELECT * FROM test_table');//seleciona tudo da tabela de teste
     const results = 
       {'results':(result)?
       result.rows:
       null}
-      res.render('pages/republicas',results);
-      client.release();
+      res.render('pages/republicas',results);//renderiza a página
+      client.release();//libera
     }catch(err){
       console.log(err);
       res.send("Erro: "+err);
     }
   })
-  // .get('/', (req, res) => res.render('pages/index'))
-  //.get('/times', (req,res)=> res.send(showTimes()))
-  //.get('/cool',(req,res)=>res.send(cool()))
+  
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
  
 const pool = new Pool({
