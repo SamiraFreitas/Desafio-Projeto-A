@@ -66,9 +66,9 @@
                       Animais <% if(r.animais) { %> ✔ <% }else {%> ✘ <% } %>
                       Trote <% if(r.trote) { %> ✔ <% }else {%> ✘ <% } %>
                       status <% if(r.status) { %> ✔ <% }else {%> ✘ <% } %>
-                      
+
                     <br>
-                    Contato : <%= r.whatsapp %>
+                    <a href="https://api.whatsapp.com/send?phone=<%= r.whatsapp %>">Whatsapp</a>
                     </p>
                     <a class="btn btn-outline-info" href="">Leia mais</a>
                   </div>
