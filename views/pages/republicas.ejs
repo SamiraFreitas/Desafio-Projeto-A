@@ -65,12 +65,8 @@
                       Garagem <% if(r.garagem) { %> ✔ <% }else {%> ✘ <% } %>
                       Animais <% if(r.animais) { %> ✔ <% }else {%> ✘ <% } %>
                       Trote <% if(r.trote) { %> ✔ <% }else {%> ✘ <% } %>
-                      status <% if(r.status) { %> ✔ <% }else {%> ✘ <% } %>
-
-                    <br>
-                    <a href="https://api.whatsapp.com/send?phone=<%= r.whatsapp %>">Whatsapp</a>
                     </p>
-                    <a class="btn btn-outline-info" href="">Leia mais</a>
+                    <a class="btn btn-outline-info" href="https://api.whatsapp.com/send?phone=<%= r.whatsapp %>">Whatsapp</a>
                   </div>
                 </div>
 
