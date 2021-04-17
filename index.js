@@ -29,10 +29,10 @@ app.use(express.static(path.join(__dirname, 'public')))
 .set('view engine', 'ejs');
 
   app.use(express.urlencoded({ extended: false}));
-  app.get('/db',(req,res)=>{ res.render('pages/db',usuario = req.user)})
+  app.get('/db',checkNotAuth,(req,res)=>{ res.render('pages/db',usuario = req.user)})
   app.get('/',(req,res)=>res.render('pages/index'));//renderiza a página home
-  app.get('/inscreva-se',(req,res)=>res.render('pages/inscreva-se'));//renderiza página escreva
-  app.get('/login',(req,res)=>res.render('pages/login'));//renderiza página login
+  app.get('/inscreva-se',checkAuth,(req,res)=>res.render('pages/inscreva-se'));//renderiza página escreva
+  app.get('/login',checkAuth,(req,res)=>res.render('pages/login'));//renderiza página login
   app.get('/republicas', async (req,res)=>{//conecta o banco de dados a página de republicas
     try{
     const client = await pool.connect();//conecta o banco de dados
@@ -114,6 +114,21 @@ app.get('/logout',(req,res)=>{
     failureFlash: true
   })
   )
+  //redireciona o usuario logado middleware
+  function checkAuth(req,res,next){
+    if(req.isAuthenticated()){
+      return res.redirect('/db');
+    }
+    next();
+  }
+
+  //redireciona o usuario deslogado middleware
+function checkNotAuth(req,res,next) {
+  if(req.isAuthenticated()){
+    return next();
+  }
+  res.redirect('/login');
+}
 
   app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
  
