@@ -52,7 +52,7 @@ app.use(express.static(path.join(__dirname, 'public')))
       let hashedPassword = await bcrypt.hash(password,10);
       const client = await pool.connect();
       client.query(
-        `SELECT * FROM users
+        `SELECT * FROM usuarios
         WHERE email=$1`,
         [email],
         (err,results)=>{
