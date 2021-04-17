@@ -6,6 +6,10 @@ const PORT = process.env.PORT || 5000
 const session = require("express-session");
 const flash = require("express-flash");
 const { Pool } = require('pg');
+const passport = require("passport");
+const initializePassport = require('./passportConfig');
+
+initializePassport(passport);//inicia o passport com a config 
 
 app = express();
 
@@ -14,6 +18,10 @@ app.use(session({
   resave : false,
   saveUninitialized:false
 }))
+
+app.use(passport.initialize);
+app.use(passport.session);
+
 app.use(flash());
 
 app.use(express.static(path.join(__dirname, 'public')))
@@ -40,6 +48,7 @@ app.use(express.static(path.join(__dirname, 'public')))
       res.send("Erro: "+err);
     }
   })
+
   app.post('/inscreva-se', async(req,res)=>{
     console.log('oi')
     let name = req.body.name;
@@ -83,6 +92,7 @@ app.use(express.static(path.join(__dirname, 'public')))
                   throw err;
                 }
                 console.log(results.rows);//se o cadastro der certo redireciona pra pagina de login com a mensagem
+                client.release();
                 req.flash('success_msg',name+ " você está registrado, por favor faça login")
                 res.redirect("/login");
               }
@@ -92,6 +102,13 @@ app.use(express.static(path.join(__dirname, 'public')))
       )
     }
 })
+
+  app.post("/login",passport.authenticate('local',{
+    successRedirect: "/db",
+    failureRedirect: "/login",
+    failureFlash: true
+  })
+  )
 
   app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
  

@@ -30,15 +30,20 @@
   <section id="login" class="d-flex">
     <div class="container align-self-center">
       <div class="row d-flex justify-content-center">
-        <form class="form-signin text-center rounded shadow" action="/users/login"  method="GET">
+        <form class="form-signin text-center rounded shadow" action="/login"  method="POST">
 
           <img class="mb-4" src="Imagens/SVG LOGO.svg" alt="" width="30%">
           <h3 class="h3 mb-3 font-weight-normal" style="color: #FF9E00">
             Fazer login
           </h3>
-          <ul>
+          <ul><!--MENSAGENS DE SUCESSO NO LOGIN-->
             <% if(messages.success_msg){ %>
                 <li><%= messages.success_msg %></li>
+            <% } %>
+          </ul>
+          <ul><!--MENSAGENS DE ERRO NO LOGIN-->
+            <% if(messages.error){ %>
+                <li><%= messages.error %></li>
             <% } %>
             
           </ul>
