@@ -8,10 +8,10 @@ const flash = require("express-flash");
 const { Pool } = require('pg');
 const passport = require("passport");
 const initializePassport = require('./passportConfig');
+app = express();
 
 initializePassport(passport);//inicia o passport com a config 
 
-app = express();
 
 app.use(session({
   secret: 'secret',
@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 .set('view engine', 'ejs');
 
   app.use(express.urlencoded({ extended: false}));
-  app.get('/db',(req,res)=>{ res.render('pages/db'),{user : req.user.nome_usuario}})
+  app.get('/db',(req,res)=>{ res.render('pages/db'), usuario = req.usuario})
   app.get('/',(req,res)=>res.render('pages/index'));//renderiza a página home
   app.get('/inscreva-se',(req,res)=>res.render('pages/inscreva-se'));//renderiza página escreva
   app.get('/login',(req,res)=>res.render('pages/login'));//renderiza página login
