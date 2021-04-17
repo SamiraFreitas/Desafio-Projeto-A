@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 .set('view engine', 'ejs');
 
   app.use(express.urlencoded({ extended: false}));
-  app.get('/db',(req,res)=>{ res.render('pages/db'), usuario = req.user, console.log(req.user)})
+  app.get('/db',(req,res)=>{ res.render('pages/db'), console.log(req.isAuthenticated()); usuario = req.user; console.log(req.user)})
   app.get('/',(req,res)=>res.render('pages/index'));//renderiza a página home
   app.get('/inscreva-se',(req,res)=>res.render('pages/inscreva-se'));//renderiza página escreva
   app.get('/login',(req,res)=>res.render('pages/login'));//renderiza página login
