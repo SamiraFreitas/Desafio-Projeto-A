@@ -53,6 +53,7 @@ app.get('/logout',(req,res)=>{
   req.flash("success_msg","você foi desconectado");
   res.redirect("/login");
 })
+
   app.post('/inscreva-se', async(req,res)=>{
     console.log('oi')
     let name = req.body.name;
