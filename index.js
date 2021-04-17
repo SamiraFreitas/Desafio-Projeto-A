@@ -75,7 +75,7 @@ app.use(express.static(path.join(__dirname, 'public')))
             pool.query(
               `INSERT INTO usuarios (email,senha)
               VALUES ($1,$2)
-              RETURNING id,password`,
+              RETURNING id,senha`,
               [email,hashedPassword],
               (err,results)=>{
                 if(err){
