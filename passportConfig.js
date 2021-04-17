@@ -20,19 +20,19 @@ function initialize(passport) {
 
                         bcrypt.compare(password,user.senha,(err, isMatch)=>{
                             if (err){
-                                
+                                client.release();
                                 throw err;
                             }
                             if(isMatch){
-                                
+                                client.release();
                                 return done(null,user);//retorna o usuario 
                             }else{
-                                
+                                client.release();
                                 return done(null,false,{message:"Senha invalida"});//retorna erro e a mensagem senha invalida
                             }
                         })
                      }else{
-                        
+                        client.release();
                          return(done(null,false,{message:"Email invalido"}));//retorna o erro se não for encontrado email
                      }
                  }
@@ -60,7 +60,7 @@ function initialize(passport) {
                         client.release();
                         throw err;
                     }else{
-                        console.log(results.rows[0].id)
+                        client.release();
                         return done(null, results.rows[0]);//usa o id para pegar os detalhes e armazenar na sessão
                     }
                 }
