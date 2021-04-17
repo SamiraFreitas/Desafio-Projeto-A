@@ -50,7 +50,7 @@ function initialize(passport) {
     );
     passport.serializeUser((user,done)=>done(null,user.id));
 
-    passport.deserializeUser((id,done)=>{
+    passport.deserializeUser(async (id,done)=>{
         const client = await pool.connect();//conecta com o banco
         client.query(//pega o usuario pelo id recebido do passport
             client.query(
