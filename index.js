@@ -50,7 +50,7 @@ app.use(express.static(path.join(__dirname, 'public')))
   })
 app.get('/logout',(req,res)=>{
   req.logOut();
-  req.flash("sucess_msg","você foi desconectado");
+  req.flash("success_msg","você foi desconectado");
   res.redirect("/login");
 })
   app.post('/inscreva-se', async(req,res)=>{
