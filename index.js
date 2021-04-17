@@ -42,6 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')))
   })
   app.post('/inscreva-se', async(req,res)=>{
     console.log('oi')
+    let name = req.body.name;
     let email = req.body.email;
     let password = req.body.password;
     let password2 = req.body.password2;
@@ -56,10 +57,10 @@ app.use(express.static(path.join(__dirname, 'public')))
     if(errors.length >0){
       res.render("pages/inscreva-se",{errors});
     }else{
-      //validação sucedida
+      //validação dos campos de login sucessedida
       let hashedPassword = await bcrypt.hash(password,10);
-      const client = await pool.connect();
-      client.query(
+      const client = await pool.connect();//conecta com o banco
+      client.query(//Verifica se existe algum usuario no banco com o mesmo email digitado
         `SELECT * FROM usuarios
         WHERE email=$1`,
         [email],
@@ -72,17 +73,17 @@ app.use(express.static(path.join(__dirname, 'public')))
             errors.push({message: "email já registrado"});
             res.render("pages/inscreva-se",{errors});
           }else{
-            pool.query(
-              `INSERT INTO usuarios (email,senha)
-              VALUES ($1,$2)
+            pool.query(//usuario valido insere no banco de dados
+              `INSERT INTO usuarios (nome_usuario,email,senha)
+              VALUES ($1,$2,$3)
               RETURNING id,senha`,
-              [email,hashedPassword],
+              [name,email,hashedPassword],
               (err,results)=>{
                 if(err){
                   throw err;
                 }
                 console.log(results.rows);
-                req.flash('succes_msg',"Você está registrado por favor faça login")
+                req.flash('succes_msg',"Você está registrado, por favor faça login")
                 res.redirect("/login");
               }
             )
