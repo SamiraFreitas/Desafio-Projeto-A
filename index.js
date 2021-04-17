@@ -3,10 +3,18 @@ const express = require('express')
 const path = require('path')
 const bcrypt = require('bcrypt')
 const PORT = process.env.PORT || 5000
-
+const session = require("express-session");
+const flash = require("express-flash");
 const { Pool } = require('pg');
 
 app = express();
+
+app.use(session({
+  secret: 'secret',
+  resave : false,
+  saveUninitialized:false
+}))
+app.use(flash());
 
 app.use(express.static(path.join(__dirname, 'public')))
 .set('views', path.join(__dirname, 'views'))
@@ -63,6 +71,21 @@ app.use(express.static(path.join(__dirname, 'public')))
           if(results.rows.length>0){
             errors.push({message: "email já registrado"});
             res.render("pages/inscreva-se",{errors});
+          }else{
+            pool.query(
+              `INSERT INTO usuarios (email,senha)
+              VALUES ($1,$2)
+              RETURNING id,password`,
+              [email,hashedPassword],
+              (err,results)=>{
+                if(err){
+                  throw err;
+                }
+                console.log(results.rows);
+                req.flash('succes_msg',"Você está registrado por favor faça login")
+                res.redirect("/login");
+              }
+            )
           }
         }
       )
