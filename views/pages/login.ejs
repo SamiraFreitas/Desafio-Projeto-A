@@ -36,9 +36,12 @@
           <h3 class="h3 mb-3 font-weight-normal" style="color: #FF9E00">
             Fazer login
           </h3>
+          <ul>
             <% if(messages.success_msg){ %>
-                <%= messages.success_msg %>
+                <li><%= messages.success_msg %></li>
             <% } %>
+            
+          </ul>
           <label for="inputEmail" class="sr-only">
             E-mail
           </label>
