@@ -77,7 +77,7 @@ app.use(express.static(path.join(__dirname, 'public')))
               `INSERT INTO usuarios (nome_usuario,email,senha)
               VALUES ($1,$2,$3)
               RETURNING id,senha`,
-              [name,email,hashedPassword],
+              [name,email,password],
               (err,results)=>{
                 if(err){
                   throw err;
