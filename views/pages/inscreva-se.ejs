@@ -34,42 +34,47 @@
   <section id="login" class="d-flex">
     <div class="container align-self-center ">
       <div class="row d-flex justify-content-center">
-        <form action="/users/inscreva-se" method="POST" class="form-signin text-center rounded shadow">
+        <form action="/inscreva-se" method="POST" class="form-signin text-center rounded shadow">
 
           <img class="mb-4" src="Imagens/SVG LOGO.svg" alt="" width="30%">
           <h2 class="h3 mb-3 font-weight-normal" style="color: #FF9E00">
             Cadastro
           </h2>
 
-          <label for="inputEmail" class="sr-only">
+          <label for="email" class="sr-only">
             E-mail
           </label>
           <input type="email" id="email" name="email" class="form-control" placeholder="E-mail" required autofocus>
-          <label for="inputPassword" class="sr-only">
+          <label for="password" class="sr-only">
             Senha
           </label>
           <input type="password" id="password" name="password" class="form-control" placeholder="Senha" required>
-          <label for="inputPassword" class="sr-only">
+          <label for="password2" class="sr-only">
             Confirmar Senha
           </label>
           <input type="password" id="password2" name="password2" class="form-control" placeholder="Confirmar Senha" required>
-        </li>
-          <!-- <div class="checkbox mb-3">
+       <!-- </li>
+           <div class="checkbox mb-3">
                       <label>
                           <input type="checkbox" value="remember-me"> 
                           Lembrar-me
                       </label>
+                      <div class="checkbox mb-3">
+                        <label>
+                          <input type="checkbox" value="remember-me">
+                          <font color="#FF9E00"> Aceitar Termos </font>
+                        </label>
+                      </div>
+                    </li>
                   </div> -->
-          <div class="checkbox mb-3">
-            <label>
-              <input type="checkbox" value="remember-me">
-              <font color="#FF9E00"> Aceitar Termos </font>
-            </label>
-          </div>
-        </li>
-        <a class="nav-link btn btn-primary" type="submit" value="Register">
-          Inscreva-se
-        </a>
+        <input class="btn btn-primary form-control" type="submit" value=" Inscreva-se"> </input>
+        <ul>
+          <% if(typeof errors != "undefined"){ %>
+            <% errors.forEach(error=>{ %>
+              <li><%= error.message %></li>
+            <% }) %>
+          <% } %>
+        </ul>
           <p class="mt-5 mb-3 text-muted">
             &copy; Fy Rep 2021
           </p>
