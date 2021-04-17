@@ -82,8 +82,8 @@ app.use(express.static(path.join(__dirname, 'public')))
                 if(err){
                   throw err;
                 }
-                console.log(results.rows);
-                req.flash('succes_msg',"Você está registrado, por favor faça login")
+                console.log(results.rows);//se o cadastro der certo redireciona pra pagina de login com a mensagem
+                req.flash('succes_msg',name+ "Você está registrado, por favor faça login")
                 res.redirect("/login");
               }
             )
