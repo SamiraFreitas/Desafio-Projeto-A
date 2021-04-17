@@ -48,7 +48,11 @@ app.use(express.static(path.join(__dirname, 'public')))
       res.send("Erro: "+err);
     }
   })
-
+app.get('/logout',(req,res)=>{
+  req.logOut();
+  req.flash("sucess_msg","você foi desconectado");
+  req.redirect("/login");
+})
   app.post('/inscreva-se', async(req,res)=>{
     console.log('oi')
     let name = req.body.name;
