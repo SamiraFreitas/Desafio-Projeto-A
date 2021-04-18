@@ -13,7 +13,7 @@ app = express();
 initializePassport(passport);//inicia o passport com a config 
 
 app.use(session({
-  secret: process.env.SECRET,
+  secret: process.env.SECRET || 'secret',
   resave : false,
   saveUninitialized:false
 }))
@@ -54,12 +54,10 @@ app.get('/logout',(req,res)=>{
 })
 
   app.post('/inscreva-se', async(req,res)=>{
-    console.log('oi')
     let name = req.body.name;
     let email = req.body.email;
     let password = req.body.password;
     let password2 = req.body.password2;
-    console.log(  email,password,password2);
     let errors =[];
     if(!email||!password||!password2){
       errors.push({message:'Preencha todos os campos!'});
@@ -70,7 +68,7 @@ app.get('/logout',(req,res)=>{
     if(errors.length >0){
       res.render("pages/inscreva-se",{errors});
     }else{
-      //validação dos campos de login sucessedida
+      //validação dos campos de login sucedida
       let hashedPassword = await bcrypt.hash(password,10);
       const client = await pool.connect();//conecta com o banco
       client.query(//Verifica se existe algum usuario no banco com o mesmo email digitado
@@ -81,7 +79,6 @@ app.get('/logout',(req,res)=>{
           if(err){
             throw err;
           }
-          console.log(results.rows);
           if(results.rows.length>0){
             errors.push({message: "email já registrado"});
             res.render("pages/inscreva-se",{errors});
@@ -95,7 +92,7 @@ app.get('/logout',(req,res)=>{
                 if(err){
                   throw err;
                 }
-                console.log(results.rows);//se o cadastro der certo redireciona pra pagina de login com a mensagem
+                //se o cadastro der certo redireciona pra pagina de login com a mensagem
                 client.release();
                 req.flash('success_msg',name+ " você está registrado, por favor faça login")
                 res.redirect("/login");
