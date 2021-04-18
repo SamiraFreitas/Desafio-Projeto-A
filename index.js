@@ -12,7 +12,6 @@ app = express();
 
 initializePassport(passport);//inicia o passport com a config 
 
-console.log(process.env.SECRET,"--------------------------------------------------------------------------");
 app.use(session({
   secret: process.env.SECRET,
   resave : false,
