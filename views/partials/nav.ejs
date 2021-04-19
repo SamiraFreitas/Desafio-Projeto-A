@@ -25,12 +25,21 @@
               <li class="nav-item divisor ">
 
               </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="inscreva-se">Inscreva-se</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="login">Entrar</a>
-              </li>
+              <% if(!usuario){ %>
+                <li class="nav-item">
+                    <a class="nav-link" href="inscreva-se">Inscreva-se</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login">Entrar</a>
+                </li>
+                <% }else{ %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="db"><%= usuario.nome_usuario.charAt(0).toUpperCase()+ usuario.nome_usuario.slice(1) %></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout">Sair</a>
+                    </li>
+              <% } %>
           </ul>
       </div>
   </div>

@@ -3,21 +3,9 @@
 <html lang="pt-br">
 
   <head>
-    <!-- Meta tags Obrigatórias -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <!-- Estilo Costumizado -->
+    <%- include ("../partials/header.ejs") %>
+      <title>FYREP - Inscreva-se </title>
     <link rel="stylesheet" type="text/css" href="CSS/signin.css">
-    <title>FYREP - Inscreva-se </title>
-    <link rel="icon" href="Imagens/SVG CASINHA.svg">
   
   </head>
 
@@ -48,7 +36,7 @@
           <label for="email" class="sr-only">
             E-mail
           </label>
-          <input type="email" id="email" name="email" class="form-control" placeholder="E-mail" required autofocus>
+          <input type="email" id="email" name="email" class="form-control" placeholder="E-mail" required>
           <label for="password" class="sr-only">
             Senha
           </label>
@@ -71,7 +59,7 @@
                       </div>
                     </li>
                   </div> -->
-        <input class="btn btn-primary form-control" type="submit" value=" Inscreva-se"> </input>
+        <input class="btn btn-lg btn-block botao" type="submit" value=" Inscreva-se"> </input>
         <ul>
           <% if(typeof errors != "undefined"){ %>
             <% errors.forEach(error=>{ %>

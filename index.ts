@@ -1,19 +1,19 @@
-const { render } = require('ejs');
-const express = require('express')
-const path = require('path')
-const bcrypt = require('bcrypt')
-const PORT = process.env.PORT || 5000
-const session = require("express-session");
-const flash = require("express-flash");
-const { Pool } = require('pg');
-const passport = require("passport");
-const initializePassport = require('./passportConfig');
-app = express();
+//import {render}   from 'ejs';
+import express from "express";
+import path from 'path';
+import bcrypt from 'bcrypt';
+const PORT = process.env.PORT || 5000;
+import session from "express-session";
+import flash from "express-flash";
+import { Pool } from 'pg';
+import passport from "passport";
+import initializePassport from './passportConfig';
+const app = express();
 
 initializePassport(passport);//inicia o passport com a config 
 
 app.use(session({
-  secret: process.env.SECRET,
+  secret: process.env.SECRET || 'secret',
   resave : false,
   saveUninitialized:false
 }))
@@ -26,21 +26,55 @@ app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')))
 .set('views', path.join(__dirname, 'views'))
 .set('view engine', 'ejs');
-
+  
   app.use(express.urlencoded({ extended: false}));
-  app.get('/db',checkNotAuth,(req,res)=>{ res.render('pages/db',usuario = req.user)})
-  app.get('/',(req,res)=>res.render('pages/index'));//renderiza a página home
-  app.get('/inscreva-se',checkAuth,(req,res)=>res.render('pages/inscreva-se'));//renderiza página escreva
-  app.get('/login',checkAuth,(req,res)=>res.render('pages/login'));//renderiza página login
+  app.get('/db',checkNotAuth,(req,res)=>{
+    const usuario =
+    (req.user)?
+    req.user:
+    null;
+     res.render('pages/db', {"usuario":usuario});
+    
+    })
+
+  app.get('/',(req,res)=>{
+    const usuario =
+    (req.user)?
+    req.user:
+    null;
+    res.render('pages/index',{"usuario":usuario})
+  
+  });//renderiza a página home
+
+  app.get('/inscreva-se',checkAuth,(req,res)=>{
+    const usuario =
+    (req.user)?
+    req.user:
+    null;
+    res.render('pages/inscreva-se',{"usuario":usuario})
+  });//renderiza página escreva
+  
+  app.get('/login',checkAuth,(req,res)=>{
+    const usuario =
+    (req.user)?
+    req.user:
+    null;
+    res.render('pages/login',{"usuario":usuario})
+  });//renderiza página login
+  
   app.get('/republicas', async (req,res)=>{//conecta o banco de dados a página de republicas
     try{
     const client = await pool.connect();//conecta o banco de dados
     const result = await client.query('SELECT * FROM republicas');//seleciona tudo da tabela de teste
     const results = 
-      {'results':(result)?
+      (result)?
       result.rows:
-      null}
-      res.render('pages/republicas',results);//renderiza a página
+      null;
+      const usuario =
+      (req.user)?
+      req.user:
+      null;
+      res.render('pages/republicas',{"usuario":usuario,"results":results});//renderiza a página
       client.release();//libera
     }catch(err){
       console.log(err);
@@ -54,12 +88,10 @@ app.get('/logout',(req,res)=>{
 })
 
   app.post('/inscreva-se', async(req,res)=>{
-    console.log('oi')
-    let name = req.body.name;
-    let email = req.body.email;
+    let name:string = req.body.name;
+    let email:string = req.body.email;
     let password = req.body.password;
     let password2 = req.body.password2;
-    console.log(  email,password,password2);
     let errors =[];
     if(!email||!password||!password2){
       errors.push({message:'Preencha todos os campos!'});
@@ -70,7 +102,7 @@ app.get('/logout',(req,res)=>{
     if(errors.length >0){
       res.render("pages/inscreva-se",{errors});
     }else{
-      //validação dos campos de login sucessedida
+      //validação dos campos de login sucedida
       let hashedPassword = await bcrypt.hash(password,10);
       const client = await pool.connect();//conecta com o banco
       client.query(//Verifica se existe algum usuario no banco com o mesmo email digitado
@@ -81,7 +113,6 @@ app.get('/logout',(req,res)=>{
           if(err){
             throw err;
           }
-          console.log(results.rows);
           if(results.rows.length>0){
             errors.push({message: "email já registrado"});
             res.render("pages/inscreva-se",{errors});
@@ -95,7 +126,7 @@ app.get('/logout',(req,res)=>{
                 if(err){
                   throw err;
                 }
-                console.log(results.rows);//se o cadastro der certo redireciona pra pagina de login com a mensagem
+                //se o cadastro der certo redireciona pra pagina de login com a mensagem
                 client.release();
                 req.flash('success_msg',name+ " você está registrado, por favor faça login")
                 res.redirect("/login");
@@ -117,6 +148,7 @@ app.get('/logout',(req,res)=>{
   //redireciona o usuario logado middleware
   function checkAuth(req,res,next){
     if(req.isAuthenticated()){
+      
       return res.redirect('/db');
     }
     next();

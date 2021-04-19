@@ -1,32 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- Meta tags Obrigatórias -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%- include ("../partials/header.ejs") %>
     
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <!-- Estilo Costumizado -->
-    
-    <link rel="stylesheet" type="text/css" href="CSS/estilo.css">
     <title>FYREP- Find Your Rep Home</title>
-    <link rel="icon" href="Imagens/SVG CASINHA.svg">
-    
+    <link rel="stylesheet" type="text/css" href="CSS/estilo.css">
     </head>
 <body>
   <%- include ("../partials/nav.ejs") %>
 
-<div class="container">
-<h2 style="color: black;">Olá! <%= usuario.nome_usuario %></h2>
-  <a href="/logout">Logout</a>
 
-</div>
+<h2  style="color: white;" class="text-center">Olá! <%= usuario.nome_usuario.charAt(0).toUpperCase()+ usuario.nome_usuario.slice(1) %></h2>
+  
+
+
 
 </body>
 </html>

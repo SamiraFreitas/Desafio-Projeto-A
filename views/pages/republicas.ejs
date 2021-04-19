@@ -2,32 +2,19 @@
 <html lang="pt-br">
 
 <head>
-  <!-- Meta tags Obrigatórias -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-  <!-- Estilo Costumizado -->
-
-  <link rel="stylesheet" type="text/css" href="CSS/republicas.css">
+  <%- include ("../partials/header.ejs") %>
   <title> FYREP - Republicas </title>
-  <link rel="icon" href="Imagens/SVG CASINHA.svg">
+  <link rel="stylesheet" type="text/css" href="CSS/republicas.css">
 
 </head>
 
 <body>
 
-  <!-- Inicio do Cabecalho-->
+  <!-- Inicio do Cabeçalho-->
   <header>
     <%- include ("../partials/nav.ejs") %>
   </header>
-  <!-- Fim do Cabecalho-->
+  <!-- Fim do Cabeçalho-->
 
   <!-- Inicio da seção Home -->
   <section id="republicas" class="d-flex">
@@ -52,7 +39,7 @@
                     <h4 class="card-title">
                       <%= r.nome_republica %>
                     </h4>
-                    <h6 clas="card-subtitle">
+                    <h6 class="card-subtitle">
                       <%= r.rua %> <%=  r.numero %> <%= r.bairro %><br> <%= r.cidade %> 
                     </h6>
                     <p class="card-text">
@@ -79,7 +66,7 @@
   <!-- Fim da seção Home-->
 
   <footer id="rodape">
-    <!-- inicio RODAPE -->
+    <!-- inicio RODAPÉ -->
     <div class="row">
 
       <div class="col-md-4">
@@ -89,7 +76,7 @@
     </div>
   </footer>
 
-  <!--/fim RODAPE -->
+  <!--/fim RODAPÉ -->
 
   <!-- JavaScript (Opcional) -->
   <!--jQuery primeiro, depois Popper.js, depois Bootstrap JS-->
