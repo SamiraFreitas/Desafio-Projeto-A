@@ -30,24 +30,51 @@ app.use(express.static(path.join(__dirname, 'public')))
   app.use(express.urlencoded({ extended: false}));
   app.get('/db',checkNotAuth,(req,res)=>{
     const usuario =
-    {'usuario':(req.user)?
+    (req.user)?
     req.user:
-    null};
-     res.render('pages/db', usuario);
+    null;
+     res.render('pages/db', {"usuario":usuario});
     
     })
-  app.get('/',(req,res)=>res.render('pages/index'));//renderiza a página home
-  app.get('/inscreva-se',checkAuth,(req,res)=>res.render('pages/inscreva-se'));//renderiza página escreva
-  app.get('/login',checkAuth,(req,res)=>res.render('pages/login'));//renderiza página login
+
+  app.get('/',(req,res)=>{
+    const usuario =
+    (req.user)?
+    req.user:
+    null;
+    res.render('pages/index',{"usuario":usuario})
+  
+  });//renderiza a página home
+
+  app.get('/inscreva-se',checkAuth,(req,res)=>{
+    const usuario =
+    (req.user)?
+    req.user:
+    null;
+    res.render('pages/inscreva-se',{"usuario":usuario})
+  });//renderiza página escreva
+  
+  app.get('/login',checkAuth,(req,res)=>{
+    const usuario =
+    (req.user)?
+    req.user:
+    null;
+    res.render('pages/login',{"usuario":usuario})
+  });//renderiza página login
+  
   app.get('/republicas', async (req,res)=>{//conecta o banco de dados a página de republicas
     try{
     const client = await pool.connect();//conecta o banco de dados
     const result = await client.query('SELECT * FROM republicas');//seleciona tudo da tabela de teste
     const results = 
-      {'results':(result)?
+      (result)?
       result.rows:
-      null}
-      res.render('pages/republicas',results);//renderiza a página
+      null;
+      const usuario =
+      (req.user)?
+      req.user:
+      null;
+      res.render('pages/republicas',{"usuario":usuario,"results":results});//renderiza a página
       client.release();//libera
     }catch(err){
       console.log(err);
@@ -121,6 +148,7 @@ app.get('/logout',(req,res)=>{
   //redireciona o usuario logado middleware
   function checkAuth(req,res,next){
     if(req.isAuthenticated()){
+      
       return res.redirect('/db');
     }
     next();

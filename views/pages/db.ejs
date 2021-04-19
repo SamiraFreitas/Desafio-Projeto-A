@@ -9,11 +9,11 @@
 <body>
   <%- include ("../partials/nav.ejs") %>
 
-<div class="container">
-<h2 style="color: white;">Olá! <%= usuario.nome_usuario %></h2>
-  <a href="/logout">Logout</a>
 
-</div>
+<h2  style="color: white;" class="text-center">Olá! <%= usuario.nome_usuario.charAt(0).toUpperCase()+ usuario.nome_usuario.slice(1) %></h2>
+  
+
+
 
 </body>
 </html>
