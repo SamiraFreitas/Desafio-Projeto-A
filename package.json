@@ -36,6 +36,7 @@
     "tape": "^4.7.0",
     "ts-node-dev": "^1.1.6"
   },
+  "type": "module",
   "keywords": [
     "node",
     "heroku",
