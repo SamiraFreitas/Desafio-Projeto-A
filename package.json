@@ -7,10 +7,9 @@
   },
   "main": "index.js",
   "scripts": {
-    "build-ts": "tsc",
-    "postinstall": "npm run build-ts",
     "start": "node index.ts",
-    "watch-node": "nodemon index.js",
+    "postinstall": "tsc",
+    "watch-node": "nodemon index.ts",
     "watch-ts": "tsc -w"
   },
   "dependencies": {
