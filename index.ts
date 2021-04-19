@@ -1,14 +1,14 @@
-const { render } = require('ejs');
-const express = require('express')
-const path = require('path')
-const bcrypt = require('bcrypt')
-const PORT = process.env.PORT || 5000
-const session = require("express-session");
-const flash = require("express-flash");
-const { Pool } = require('pg');
-const passport = require("passport");
-const initializePassport = require('./passportConfig');
-app = express();
+//import {render}   from 'ejs';
+import express from "express";
+import path from 'path';
+import bcrypt from 'bcrypt';
+const PORT = process.env.PORT || 5000;
+import session from "express-session";
+import flash from "express-flash";
+import { Pool } from 'pg';
+import passport from "passport";
+import initializePassport from './passportConfig';
+const app = express();
 
 initializePassport(passport);//inicia o passport com a config 
 
@@ -26,9 +26,16 @@ app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')))
 .set('views', path.join(__dirname, 'views'))
 .set('view engine', 'ejs');
-
+  
   app.use(express.urlencoded({ extended: false}));
-  app.get('/db',checkNotAuth,(req,res)=>{ res.render('pages/db',usuario = req.user)})
+  app.get('/db',checkNotAuth,(req,res)=>{
+    const usuario =
+    {'usuario':(req.user)?
+    req.user:
+    null};
+     res.render('pages/db', usuario);
+    
+    })
   app.get('/',(req,res)=>res.render('pages/index'));//renderiza a página home
   app.get('/inscreva-se',checkAuth,(req,res)=>res.render('pages/inscreva-se'));//renderiza página escreva
   app.get('/login',checkAuth,(req,res)=>res.render('pages/login'));//renderiza página login
@@ -54,8 +61,8 @@ app.get('/logout',(req,res)=>{
 })
 
   app.post('/inscreva-se', async(req,res)=>{
-    let name = req.body.name;
-    let email = req.body.email;
+    let name:string = req.body.name;
+    let email:string = req.body.email;
     let password = req.body.password;
     let password2 = req.body.password2;
     let errors =[];

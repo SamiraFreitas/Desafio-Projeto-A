@@ -64,14 +64,20 @@ nav.navbar-transparente{
   z-index: 1;
   
 }
-.form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-  
+.form-signin input {
+  border-radius: 3px;
+  border: none;
+  margin-top: 1px;
+  color: #9D4EDD;
 }
-.form-signin input[type="password"] {
-  margin-bottom: 8px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+
+.botao{
+  background-color: #3C096C;
+  color: #9D4EDD;
+  margin-top: 5px;
+}
+
+.botao:hover{
+  background-color: #240046;
+  color: aliceblue;
 }
