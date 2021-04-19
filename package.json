@@ -7,9 +7,9 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "node index.ts",
-    "postinstall": "tsc",
-    "watch-node": "nodemon index.ts",
+    "start": "node dist/index.ts",
+    "postinstall": "tsc && mv -i -v public dist/ && rm -v -rf src",
+    "watch-node": "nodemon dist/index.ts",
     "watch-ts": "tsc -w"
   },
   "dependencies": {
@@ -20,6 +20,7 @@
     "express": "^4.15.2",
     "express-flash": "0.0.2",
     "express-session": "^1.17.1",
+    "nodemon": "^2.0.7",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "pg": "^8.5.1",
