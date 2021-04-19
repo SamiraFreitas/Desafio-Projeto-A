@@ -18,7 +18,8 @@
     "express-session": "^1.17.1",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "pg": "^8.5.1"
+    "pg": "^8.5.1",
+    "ts-node": "^9.1.1"
   },
   "devDependencies": {
     "@types/bcrypt": "^3.0.1",
