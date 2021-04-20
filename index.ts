@@ -138,6 +138,26 @@ app.get('/logout',(req,res)=>{
     }
 })
 
+  app.post("/db", async (req,res)=>{
+    const {
+      nome_republica,
+      rua,
+      bairro,
+      cidade,
+      whatsapp,
+      video_game,
+      numero,
+      area_externa,
+      piscina,
+      garagem,
+      animais,
+      faxineira,
+      tv_a_cabo,
+      area_de_estudos,
+    } = req.body;
+    console.log(typeof(numero),numero);
+    console.log(typeof(garagem),garagem);
+  })
 
   app.post("/login",passport.authenticate('local',{
     successRedirect: "/db",
