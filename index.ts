@@ -7,7 +7,7 @@ import session from "express-session";
 import flash from "express-flash";
 import { Pool } from 'pg';
 import passport from "passport";
-import initializePassport from './passportConfig';
+import {initialize as initializePassport} from './passportConfig';
 const app = express();
 
 initializePassport(passport);//inicia o passport com a config 
@@ -29,36 +29,24 @@ app.use(express.static(path.join(__dirname, 'public')))
   
   app.use(express.urlencoded({ extended: false}));
   app.get('/db',checkNotAuth,(req,res)=>{
-    const usuario =
-    (req.user)?
-    req.user:
-    null;
+    const usuario: any =(req.user)?req.user:null;
      res.render('pages/db', {"usuario":usuario});
     
     })
 
   app.get('/',(req,res)=>{
-    const usuario =
-    (req.user)?
-    req.user:
-    null;
+    const usuario: any =(req.user)?req.user:null;
     res.render('pages/index',{"usuario":usuario})
   
   });//renderiza a página home
 
   app.get('/inscreva-se',checkAuth,(req,res)=>{
-    const usuario =
-    (req.user)?
-    req.user:
-    null;
+    const usuario: any =(req.user)?req.user:null;
     res.render('pages/inscreva-se',{"usuario":usuario})
   });//renderiza página escreva
   
   app.get('/login',checkAuth,(req,res)=>{
-    const usuario =
-    (req.user)?
-    req.user:
-    null;
+    const usuario: any =(req.user)?req.user:null;
     res.render('pages/login',{"usuario":usuario})
   });//renderiza página login
   
@@ -66,14 +54,8 @@ app.use(express.static(path.join(__dirname, 'public')))
     try{
     const client = await pool.connect();//conecta o banco de dados
     const result = await client.query('SELECT * FROM republicas');//seleciona tudo da tabela de teste
-    const results = 
-      (result)?
-      result.rows:
-      null;
-      const usuario =
-      (req.user)?
-      req.user:
-      null;
+    const results = (result)?result.rows:null;
+      const usuario: any =(req.user)?req.user:null;
       res.render('pages/republicas',{"usuario":usuario,"results":results});//renderiza a página
       client.release();//libera
     }catch(err){
@@ -139,6 +121,7 @@ app.get('/logout',(req,res)=>{
 })
 
   app.post("/db", async (req,res)=>{
+    
     const {
       nome_republica,
       rua,
