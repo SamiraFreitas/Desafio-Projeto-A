@@ -8,6 +8,7 @@ import flash from "express-flash";
 import { Pool } from 'pg';
 import passport from "passport";
 import {initialize as initializePassport} from './passportConfig';
+import { RepublicaService } from "./RepublicaServices";
 const app = express();
 
 initializePassport(passport);//inicia o passport com a config 
@@ -23,8 +24,8 @@ app.use(passport.session());
 
 app.use(flash());
 
-app.use(express.static(path.join(__dirname, 'public')))
-.set('views', path.join(__dirname, 'views'))
+app.use(express.static(path.join(__dirname, '../public')))
+.set('views', path.join(__dirname, '../views'))
 .set('view engine', 'ejs');
   
   app.use(express.urlencoded({ extended: false}));
@@ -120,27 +121,11 @@ app.get('/logout',(req,res)=>{
     }
 })
 
-  app.post("/db", async (req,res)=>{
-    
-    const {
-      nome_republica,
-      rua,
-      bairro,
-      cidade,
-      whatsapp,
-      video_game,
-      numero,
-      area_externa,
-      piscina,
-      garagem,
-      animais,
-      faxineira,
-      tv_a_cabo,
-      area_de_estudos,
-    } = req.body;
-    console.log(typeof(numero),numero);
-    console.log(typeof(garagem),garagem);
-  })
+  app.post("/db",(req,res)=>{
+    const republicaService = new RepublicaService();
+    republicaService.create(req,res);
+  } )
+  
 
   app.post("/login",passport.authenticate('local',{
     successRedirect: "/db",

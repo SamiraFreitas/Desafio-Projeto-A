@@ -30,49 +30,104 @@
       <form id="form" method="POST" action="/db">
         <div class="form-row">
           <div class="form-group col-md-4">
-            <label for="inputEmail4">Email</label>
-            <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+            <label for="inputEmail4">Nome Republica</label>
+            <input type="text" class="form-control" id="inputEmail4" placeholder="Nome Republica" name="nome_republica" required>
           </div>
           <div class="form-group col-md-4">
-            <label for="inputPassword4">Password</label>
-            <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="inputAddress">Address</label>
-          <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-        </div>
-        <div class="form-group">
-          <label for="inputAddress2">Address 2</label>
-          <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-4">
-            <label for="inputCity">City</label>
-            <input type="text" class="form-control" id="inputCity">
-          </div>
-          <div class="form-group col-md-4">
-            <label for="inputState">State</label>
-            <select id="inputState" class="form-control">
-              <option selected>Choose...</option>
-              <option>...</option>
-            </select>
+            <label for="rua">Rua</label>
+            <input type="text" class="form-control" id="rua" placeholder="Rua" name="rua" required>
           </div>
           <div class="form-group col-md-4">
             <label for="numero">Numero</label>
-            <input type="number" name="numero" class="form-control" id="numero">
+            <input type="number" class="form-control" id="numero" placeholder="Numero" name="numero" required>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="inputEmail4">Bairro</label>
+            <input type="text" class="form-control" id="inputEmail4" placeholder="bairro" name="bairro" required>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="rua">Cidade</label>
+            <input type="text" class="form-control" id="cidade" placeholder="Cidade" name="cidade" required>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="numero">Numero de quartos</label>
+            <input type="number" class="form-control" id="n_quartos" placeholder="numero quartos" name="n_quartos" required>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="n_banheiros">Numero de Banheiros</label>
+            <input type="number" class="form-control" id="n_banheiros" placeholder="n_banheiros" name="n_banheiros" required>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="n_suites">Numero de Suites</label>
+            <input type="number" class="form-control" id="n_suites" placeholder="n_suites" name="n_suites" required>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="video_game">Video Game</label>
+            <input type="text" class="form-control" id="video_game" placeholder="Coloque não ou o nome" name="video_game" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="wifi">Velocidade Wifi</label>
+            <input type="number" class="form-control" id="wifi" placeholder="velocidade wifi" name="wifi" required>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="whatsapp">Numero Whatsapp</label>
+            <input type="text" class="form-control" id="n_suites" placeholder="5531987792589" name="whatsapp" required>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="video_game">ID imagem Drive</label>
+            <input type="text" class="form-control" id="img" placeholder="img" name="img" required>
           </div>
         </div>
         
         <div class="form-group">
           <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="trote" id="trote">
+            <label class="form-check-label" for="trote">
+              Trote
+            </label>
+            <input class="form-check-input" type="checkbox" name="area_estudos" id="area_de_estudos">
+            <label class="form-check-label" for="area_de_estudos">
+              Area de Estudos
+            </label>
+            <input class="form-check-input" type="checkbox" name="tv_a_cabo" id="tv_a_cabo">
+            <label class="form-check-label" for="tv_a_cabo">
+              Tv a Cabo
+            </label>
+            <input class="form-check-input" type="checkbox" name="area_externa" id="area_externa">
+            <label class="form-check-label" for="garagem">
+              area_externa
+            </label>
+            <input class="form-check-input" type="checkbox" name="piscina" id="piscina">
+            <label class="form-check-label" for="piscina">
+              piscina
+            </label>
+            <input class="form-check-input" type="checkbox" name="faxineira" id="faxineira">
+            <label class="form-check-label" for="faxineira">
+              Faxineira
+            </label>
+            <input class="form-check-input" type="checkbox" name="almoco_diario" id="almoco_diario">
+            <label class="form-check-label" for="almoco_diario">
+              Almoço Diario
+            </label>
             <input class="form-check-input" type="checkbox" name="garagem" id="garagem">
             <label class="form-check-label" for="garagem">
               Garagem
             </label>
+            <input class="form-check-input" type="checkbox" name="animais" id="animais">
+            <label class="form-check-label" for="animais">
+              Animais
+            </label>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary">Sign in</button>
+        <button type="submit" class="btn btn-primary">Salvar</button>
       </form>
      
        </div>
