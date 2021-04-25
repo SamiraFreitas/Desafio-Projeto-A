@@ -14,7 +14,6 @@ function initialize(passport) {
         if (err) {
           throw err;
         } else {
-          console.log(results.rows);
           if (results.rows.length) {
             //encontrou um usuario no banco
             const user = results.rows[0]; //pega o usuario
@@ -51,12 +50,7 @@ function initialize(passport) {
   );
   passport.serializeUser((user, done) => done(null, user.id));
 
-  interface usuario extends Express.User{
-      nome_usuario: string,
-      email: string;
-      id: number,
-      senha: string
-  }
+ 
   passport.deserializeUser(async (id, done) => {
     try{
     const client = await pool.connect(); //conecta com o banco
@@ -64,7 +58,8 @@ function initialize(passport) {
     client.query(
       `SELECT * FROM usuarios WHERE id = $1`,
       [id],
-      (err, results):usuario => {
+      
+      (err, results) => {
         if (err) {
           client.release();
           throw err;
@@ -86,4 +81,4 @@ const pool = new Pool({
     rejectUnauthorized: false,
   },
 });
-export default initialize;
+export  { initialize };

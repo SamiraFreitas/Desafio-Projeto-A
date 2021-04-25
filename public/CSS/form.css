@@ -1,0 +1,70 @@
+html, body, #home{
+    height: 100%;
+    overflow-x: hidden;
+    }
+    
+    body{
+    background-color: #240046;
+    
+    }
+    
+    /* Barra de navegacao */
+    nav.navbar-transparente{
+    padding: 10px, 0px;
+    background: rgba(0, 0, 0, 0.6);
+    }
+    
+    .navbar-dark .navbar-nav .nav-link {
+    color: white;
+    }
+    
+    .navbar-dark .navbar-nav .nav-link:hover {
+    color: #7B2CBF;
+    }
+    
+    .navbar-dark .navbar-toggler {
+    color: rgba(255,255,255,.5);
+    border-color: rgba(255,255,255,0.5);
+    }
+    
+    .divisor{
+    margin: 15px 15px;
+    width: 1px;
+    background:white;
+    }
+    /* Home */
+    .capa{
+    text-align: center;
+    }
+    /* Fontes adicionais*/
+    @font-face {
+    font-family: Mansalva;
+    src: url('https://fonts.googleapis.com/css2?family=Mansalva&display=swap');
+    }
+    
+    #p1{
+    font-family: 'Mansalva', cursive;
+ 
+    line-height: 52px; 
+    color: white;
+    }
+    #quemsomos{
+    background: #7B2CBF;
+  
+    }
+
+    #contquemsomos{
+        padding-top: 1%; 
+        padding-bottom: 4%;       
+        }
+
+    #rodape{
+    background: #240046;
+    }
+    
+    #form{
+        border: 1px solid red;
+        color: white;
+        padding: 10px;
+        padding-bottom: 10px;
+    }

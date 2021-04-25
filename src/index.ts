@@ -7,7 +7,8 @@ import session from "express-session";
 import flash from "express-flash";
 import { Pool } from 'pg';
 import passport from "passport";
-import initializePassport from './passportConfig';
+import {initialize as initializePassport} from './passportConfig';
+import { RepublicaService } from "./services/RepublicaServices";
 const app = express();
 
 initializePassport(passport);//inicia o passport com a config 
@@ -23,59 +24,36 @@ app.use(passport.session());
 
 app.use(flash());
 
-app.use(express.static(path.join(__dirname, 'public')))
-.set('views', path.join(__dirname, 'views'))
+app.use(express.static(path.join(__dirname, '../public')))
+.set('views', path.join(__dirname, '../views'))
 .set('view engine', 'ejs');
   
   app.use(express.urlencoded({ extended: false}));
-  app.get('/db',checkNotAuth,(req,res)=>{
-    const usuario =
-    (req.user)?
-    req.user:
-    null;
-     res.render('pages/db', {"usuario":usuario});
-    
-    })
+ 
 
   app.get('/',(req,res)=>{
-    const usuario =
-    (req.user)?
-    req.user:
-    null;
+    const usuario: any =(req.user)?req.user:null;
     res.render('pages/index',{"usuario":usuario})
   
   });//renderiza a página home
 
   app.get('/inscreva-se',checkAuth,(req,res)=>{
-    const usuario =
-    (req.user)?
-    req.user:
-    null;
+    const usuario: any =(req.user)?req.user:null;
     res.render('pages/inscreva-se',{"usuario":usuario})
   });//renderiza página escreva
   
   app.get('/login',checkAuth,(req,res)=>{
-    const usuario =
-    (req.user)?
-    req.user:
-    null;
+    const usuario: any =(req.user)?req.user:null;
     res.render('pages/login',{"usuario":usuario})
   });//renderiza página login
   
   app.get('/republicas', async (req,res)=>{//conecta o banco de dados a página de republicas
     try{
-    const client = await pool.connect();//conecta o banco de dados
-    const result = await client.query('SELECT * FROM republicas');//seleciona tudo da tabela de teste
-    const results = 
-      (result)?
-      result.rows:
-      null;
-      const usuario =
-      (req.user)?
-      req.user:
-      null;
-      res.render('pages/republicas',{"usuario":usuario,"results":results});//renderiza a página
-      client.release();//libera
+      const republicaService = new RepublicaService();
+      const republicas = await republicaService.listaRepublicas();
+      const usuario: any = (req.user)?req.user:null;
+      res.render('pages/republicas',{"usuario":usuario,"republicas":republicas});//renderiza a página
+      //libera
     }catch(err){
       console.log(err);
       res.send("Erro: "+err);
@@ -88,27 +66,32 @@ app.get('/logout',(req,res)=>{
 })
 
   app.post('/inscreva-se', async(req,res)=>{
-    let name:string = req.body.name;
-    let email:string = req.body.email;
-    let password = req.body.password;
-    let password2 = req.body.password2;
     let errors =[];
-    if(!email||!password||!password2){
+    interface Usuario{
+      name:string,
+      email:string,
+      password:string,
+      password2:string
+    }
+    
+      const usuario : Usuario = req.body;
+    
+      if(!usuario.email||!usuario.password||!usuario.password2){
       errors.push({message:'Preencha todos os campos!'});
     }
-    if(password!=password2){
+    if(usuario.password!=usuario.password2){
       errors.push({message:'As senhas não conferem'});
     }
     if(errors.length >0){
       res.render("pages/inscreva-se",{errors});
     }else{
       //validação dos campos de login sucedida
-      let hashedPassword = await bcrypt.hash(password,10);
+      let hashedPassword = await bcrypt.hash(usuario.password,10);
       const client = await pool.connect();//conecta com o banco
       client.query(//Verifica se existe algum usuario no banco com o mesmo email digitado
         `SELECT * FROM usuarios
         WHERE email=$1`,
-        [email],
+        [usuario.email],
         (err,results)=>{
           if(err){
             throw err;
@@ -121,14 +104,14 @@ app.get('/logout',(req,res)=>{
               `INSERT INTO usuarios (nome_usuario,email,senha)
               VALUES ($1,$2,$3)
               RETURNING id,senha`,
-              [name,email,hashedPassword],
+              [usuario.name,usuario.email,hashedPassword],
               (err,results)=>{
                 if(err){
                   throw err;
                 }
                 //se o cadastro der certo redireciona pra pagina de login com a mensagem
                 client.release();
-                req.flash('success_msg',name+ " você está registrado, por favor faça login")
+                req.flash('success_msg',usuario.name+ " você está registrado, por favor faça login")
                 res.redirect("/login");
               }
             )
@@ -138,6 +121,19 @@ app.get('/logout',(req,res)=>{
     }
 })
 
+app.get('/db',checkNotAuth,(req,res)=>{
+  
+  const republicaService = new RepublicaService();
+    republicaService.create(req,res);
+   
+  
+  })
+  
+  app.post("/db",(req,res)=>{
+    const republicaService = new RepublicaService();
+    republicaService.create(req,res);
+  } )
+  
 
   app.post("/login",passport.authenticate('local',{
     successRedirect: "/db",
