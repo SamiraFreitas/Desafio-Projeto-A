@@ -27,6 +27,35 @@
       </div>
 
       <br><br>
+      <% if(r) { %>
+        <div class="card">
+          <img class="card-img-top" src="https://drive.google.com/uc?id=<%= r.img %>" style="width:100%;height:300px;">
+          <div class="card-body">
+            <h4 class="card-title">
+              <%= r.nome_republica %>
+            </h4>
+            <h6 class="card-subtitle">
+              <%= r.rua %> <%=  r.numero %> <%= r.bairro %><br> <%= r.cidade %> 
+            </h6>
+            <p class="card-text">
+              Area de Estudos <% if(r.area_estudos) { %> ✔ <% }else {%> ✘ <% } %>
+              Tv a Cabo <% if(r.tv_a_cabo) { %> ✔ <% }else {%> ✘ <% } %><br>
+              Area Externa <% if(r.area_externa) { %> ✔ <% }else {%> ✘ <% } %>
+              Piscina <% if(r.piscina) { %> ✔ <% }else {%> ✘ <% } %><br>
+              Faxineira <% if(r.faxineira) { %> ✔ <% }else {%> ✘ <% } %>
+              Almoço Diario <% if(r.almoco_diario) { %> ✔ <% }else {%> ✘ <% } %><br>
+              Garagem <% if(r.garagem) { %> ✔ <% }else {%> ✘ <% } %>
+              Animais <% if(r.animais) { %> ✔ <% }else {%> ✘ <% } %>
+              Trote <% if(r.trote) { %> ✔ <% }else {%> ✘ <% } %>
+            </p>
+            <a class="btn btn-outline-info" href="https://api.whatsapp.com/send?phone=<%= r.whatsapp %>">Whatsapp</a>
+          </div>
+        </div>
+
+
+        <% }else{ %>
+        
+        
       <form id="form" method="POST" action="/db">
         <div class="form-row">
           <div class="form-group col-md-4">
@@ -93,7 +122,7 @@
             <label class="form-check-label" for="trote">
               Trote
             </label>
-            <input class="form-check-input" type="checkbox" name="area_estudos" id="area_de_estudos">
+            <input class="form-check-input" type="checkbox" name="area_de_estudos" id="area_de_estudos">
             <label class="form-check-label" for="area_de_estudos">
               Area de Estudos
             </label>
@@ -129,7 +158,7 @@
         </div>
         <button type="submit" class="btn btn-primary">Salvar</button>
       </form>
-     
+      <% } %>
        </div>
          
 </section>

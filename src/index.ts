@@ -29,11 +29,7 @@ app.use(express.static(path.join(__dirname, '../public')))
 .set('view engine', 'ejs');
   
   app.use(express.urlencoded({ extended: false}));
-  app.get('/db',checkNotAuth,(req,res)=>{
-    const usuario: any =(req.user)?req.user:null;
-     res.render('pages/db', {"usuario":usuario});
-    
-    })
+ 
 
   app.get('/',(req,res)=>{
     const usuario: any =(req.user)?req.user:null;
@@ -125,6 +121,14 @@ app.get('/logout',(req,res)=>{
     }
 })
 
+app.get('/db',checkNotAuth,(req,res)=>{
+  
+  const republicaService = new RepublicaService();
+    republicaService.create(req,res);
+   
+  
+  })
+  
   app.post("/db",(req,res)=>{
     const republicaService = new RepublicaService();
     republicaService.create(req,res);
