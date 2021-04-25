@@ -1,7 +1,24 @@
 import {Request , Response} from "express";
 import { Pool } from "pg";
 
+const pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false
+    }
+});
+
+
+
 class RepublicaService{
+async listaRepublicas(){
+    const client = await pool.connect();//conecta o banco de dados
+    const result = await client.query('SELECT * FROM republicas');//seleciona tudo da tabela de teste
+    const results = (result)?result.rows:null;
+    client.release();
+    return results;
+}
+
 async create(req: Request,res:Response){
     const usuario: any =(req.user)?req.user:null;
     const {
@@ -116,11 +133,6 @@ async create(req: Request,res:Response){
 }
 }
 
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-      rejectUnauthorized: false
-    }
-  });
+
     
   export {RepublicaService}
