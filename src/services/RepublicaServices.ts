@@ -8,7 +8,29 @@ const pool = new Pool({
     }
 });
 
-
+interface Republica {
+    nome_republica:string,
+    rua:string,
+    bairro:string,
+    cidade:string,
+    trote:boolean,
+    n_quartos:number,
+    n_banheiros:number,
+    n_suites:number,
+    area_de_estudos:boolean,
+    wifi:number,
+    tv_a_cabo:boolean,
+    video_game:string,
+    numero:number,
+    area_externa:boolean,
+    piscina:boolean,
+    faxineira:boolean,
+    almoco_diario:boolean,
+    garagem:boolean,
+    animais:boolean,
+    whatsapp:string,
+    img:string
+  } 
 
 class RepublicaService{
 async listaRepublicas(){
@@ -21,31 +43,9 @@ async listaRepublicas(){
 
 async create(req: Request,res:Response){
     const usuario: any =(req.user)?req.user:null;
-    const {
-      nome_republica,
-      rua,
-      bairro,
-      cidade,
-      trote,
-      n_quartos,
-      n_banheiros,
-      n_suites,
-      area_de_estudos,
-      wifi,
-      tv_a_cabo,
-      video_game,
-      numero,
-      area_externa,
-      piscina,
-      faxineira,
-      almoco_diario,
-      garagem,
-      animais,
-      whatsapp,
-      img
-    } = req.body;
+    const rep:Republica= req.body;
     console.log(usuario)
-    console.log(parseInt(wifi))
+    
     try{
     const client = await pool.connect();//conecta o banco de dados
     const result:any = await client.query(
@@ -60,67 +60,42 @@ async create(req: Request,res:Response){
                     return res.rows[0];
 
                 }else{
-                    console.log("estou aqui")
+                    console.log("estou aqui",rep.whatsapp.toString().length)
                     client.query(`INSERT INTO republicas 
                     VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26)
                     RETURNING id`,
                     [
                         usuario.id,
-                        nome_republica,
-                        rua,
-                        parseInt(numero),
-                        bairro,
-                        cidade,
-                        trote=="on"?true:false,
-                        parseInt(n_quartos),
-                        parseInt(n_banheiros),
-                        parseInt(n_suites),
-                        area_de_estudos=="on"?true:false,
-                        parseInt(wifi),
-                        tv_a_cabo=="on"?true:false,
-                        video_game,
-                        area_externa=="on"?true:false,
-                        piscina=="on"?true:false,
-                        faxineira=="on"?true:false,
-                        almoco_diario=="on"?true:false,
-                        garagem=="on"?true:false,
-                        animais=="on"?true:false,
-                        whatsapp,
+                        rep.nome_republica,
+                        rep.rua,
+                        rep.numero,
+                        rep.bairro,
+                        rep.cidade,
+                        rep.trote,
+                        rep.n_quartos,
+                        rep.n_banheiros,
+                        rep.n_suites,
+                        rep.area_de_estudos,
+                        rep.wifi,
+                        rep.tv_a_cabo,
+                        rep.video_game,
+                        rep.area_externa,
+                        rep.piscina,
+                        rep.faxineira,
+                        rep.almoco_diario,
+                        rep.garagem,
+                        rep.animais,
+                        rep.whatsapp,
                         usuario.email,
                         usuario.id,
                         usuario.nome_usuario,
                         true,
-                        img
+                        rep.img
                     ]
                     )
                 }
-                console.log([
-                    nome_republica,
-                    rua,
-                    parseInt(numero),
-                    bairro,
-                    cidade,
-                    trote=="on"?true:false,
-                    parseInt(n_quartos),
-                    parseInt(n_banheiros),
-                    parseInt(n_suites),
-                    area_de_estudos=="on"?true:false,
-                    parseInt(wifi),
-                    tv_a_cabo=="on"?true:false,
-                    video_game,
-                    area_externa=="on"?true:false,
-                    piscina=="on"?true:false,
-                    faxineira=="on"?true:false,
-                    almoco_diario=="on"?true:false,
-                    garagem=="on"?true:false,
-                    animais=="on"?true:false,
-                    whatsapp,
-                    usuario.id,
-                    usuario.nome_usuario,
-                    true,
-                    img
-                ])
-                console.log(res.rows[0]);
+                console.log(rep);
+                
             }
         }
     );
