@@ -7,11 +7,11 @@ import flash from "express-flash";
 import { Pool } from "pg";
 import passport from "passport";
 import { initialize as initializePassport } from "./passportConfig";
-import { RepublicaService,Republica } from "./services/RepublicaServices";
+import { RepublicaController,Republica } from "./controllers/RepublicaController";
 import { checkAuth, checkNotAuth } from "./middleware";
 
 const app = express();
-const republicaService = new RepublicaService();
+const republicaController = new RepublicaController();
 
 initializePassport(passport); //inicia o passport com a config
 
@@ -43,7 +43,7 @@ app.get("/", (req, res) => {
 app.get("/republicas", async (req, res) => {
   //conecta o banco de dados a página de republicas
   try {
-    const republicas:Republica[] = await republicaService.listaRepublicas();
+    const republicas:Republica[] = await republicaController.listaRepublicas();
     const usuario: any = req.user ? req.user : null;
     res.render("pages/republicas", { usuario: usuario,republicas: republicas}); //renderiza a página de republicas
   } catch (err) {
@@ -140,10 +140,10 @@ app.post("/inscreva-se", async (req, res) => {
 
 //página usuario/cadastro da republica
 app.get("/db", checkNotAuth, (req, res) => {
-  republicaService.create(req, res);
+    republicaController.create(req, res);
 });
 app.post("/db", (req, res) => {
-  republicaService.create(req, res);
+    republicaController.create(req, res);
 });
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));

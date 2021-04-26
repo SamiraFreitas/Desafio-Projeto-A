@@ -32,8 +32,8 @@ interface Republica {
   img: string;
 }
 
-class RepublicaService {
-  async listaRepublicas<Republica>() {
+class RepublicaController {
+  async listaRepublicas():Promise<Republica[] | undefined> {
     const client = await pool.connect(); //conecta o banco de dados
     const result = await client.query("SELECT * FROM republicas"); //seleciona tudo da tabela de teste
     const results:Republica[] = result ? result.rows : null;
@@ -110,4 +110,4 @@ class RepublicaService {
   }
 }
 
-export { RepublicaService ,Republica};
+export { RepublicaController ,Republica};
