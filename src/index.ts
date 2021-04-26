@@ -7,7 +7,7 @@ import flash from "express-flash";
 import { Pool } from "pg";
 import passport from "passport";
 import { initialize as initializePassport } from "./passportConfig";
-import { RepublicaService } from "./services/RepublicaServices";
+import { RepublicaService,Republica } from "./services/RepublicaServices";
 import { checkAuth, checkNotAuth } from "./middleware";
 
 const app = express();
@@ -43,7 +43,7 @@ app.get("/", (req, res) => {
 app.get("/republicas", async (req, res) => {
   //conecta o banco de dados a página de republicas
   try {
-    const republicas = await republicaService.listaRepublicas();
+    const republicas:Republica[] = await republicaService.listaRepublicas();
     const usuario: any = req.user ? req.user : null;
     res.render("pages/republicas", { usuario: usuario,republicas: republicas}); //renderiza a página de republicas
   } catch (err) {
