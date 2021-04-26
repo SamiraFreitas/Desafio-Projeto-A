@@ -42,14 +42,9 @@ app.get("/", (req, res) => {
 
 app.get("/republicas", async (req, res) => {
   //conecta o banco de dados a página de republicas
-  try {
     const republicas:Republica[] = await republicaController.listaRepublicas();
     const usuario: any = req.user ? req.user : null;
     res.render("pages/republicas", { usuario: usuario,republicas: republicas}); //renderiza a página de republicas
-  } catch (err) {
-    console.log(err);
-    res.send("Erro: " + err);
-  }
 });
 
 
@@ -140,7 +135,7 @@ app.post("/inscreva-se", async (req, res) => {
 
 //página usuario/cadastro da republica
 app.get("/db",
- checkNotAuth, 
+ checkNotAuth, //verifica se o usuario esta deslogado ao tentar entrar na pagina do usuario
  republicaController.create
 );
 app.post("/db",
@@ -148,4 +143,3 @@ app.post("/db",
 );
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
-
