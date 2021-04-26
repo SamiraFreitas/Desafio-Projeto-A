@@ -139,12 +139,13 @@ app.post("/inscreva-se", async (req, res) => {
 
 
 //página usuario/cadastro da republica
-app.get("/db", checkNotAuth, (req, res) => {
-    republicaController.create(req, res);
-});
-app.post("/db", (req, res) => {
-    republicaController.create(req, res);
-});
+app.get("/db",
+ checkNotAuth, 
+ republicaController.create
+);
+app.post("/db",
+ republicaController.create
+);
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
