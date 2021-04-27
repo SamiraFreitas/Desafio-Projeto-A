@@ -33,19 +33,27 @@ interface Republica {
 }
 
 class RepublicaController {
-  async listaRepublicas():Promise<Republica[] | undefined> {
-    const client = await pool.connect(); //conecta o banco de dados
-    const result = await client.query("SELECT * FROM republicas"); //seleciona tudo da tabela de teste
-    const results:Republica[] = result ? result.rows : null;
-    client.release();
-    return results;
-  }
 
-  async create(req: Request, res: Response) {
+
+   async renderizaRep(req:Request, res:Response){
+     try{      
+        const client = await pool.connect(); //conecta o banco de dados
+        const result = await client.query("SELECT * FROM republicas"); //seleciona tudo da tabela de teste
+        const results:Republica[] = result ? result.rows : null;
+        
+        client.release();
+        const usuario: any = req.user ? req.user : null;
+        return res.render("pages/republicas", { usuario: usuario,republicas: results}); //renderiza a página de republicas
+ 
+      }catch(e){
+        console.error(e);
+      }
+    };
+ async create(req: Request, res: Response) {
     const usuario: any = req.user ? req.user : null;
     const rep: Republica = req.body;
     console.log(usuario);
-
+    
     try {
       const client = await pool.connect(); //conecta o banco de dados
       const result: any = await client.query(
