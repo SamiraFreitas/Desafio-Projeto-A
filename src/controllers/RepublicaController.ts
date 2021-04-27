@@ -15,7 +15,7 @@ interface Republica {
   bairro: string;
   cidade: string;
   whatsapp: string;
-  video_game: string;
+  sexo: string;
   n_quartos: number;
   n_suites: number;
   n_banheiros: number;
@@ -53,7 +53,7 @@ class RepublicaController {
     const usuario: any = req.user ? req.user : null;
     const rep: Republica = req.body;
     console.log(usuario);
-    
+    console.log(rep.sexo);
     try {
       const client = await pool.connect(); //conecta o banco de dados
       const result: any = await client.query(
@@ -86,7 +86,7 @@ class RepublicaController {
               rep.bairro,
               rep.cidade,
               rep.whatsapp,
-              rep.video_game,
+              rep.sexo,
               rep.n_quartos,
               rep.n_suites,
               rep.n_banheiros,
