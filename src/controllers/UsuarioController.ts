@@ -37,6 +37,7 @@ class UsuarioController {
         }
       
         const usuario: Usuario = req.body;
+        console.log(usuario);
       
         if (!usuario.email || !usuario.password || !usuario.password2) {
           errors.push({ message: "Preencha todos os campos!" });
@@ -45,7 +46,7 @@ class UsuarioController {
           errors.push({ message: "As senhas não conferem" });
         }
         if (errors.length > 0) {
-          res.render("pages/inscreva-se", { errors });
+          res.render("pages/inscreva-se", {"errors": errors,"usuario":null });
         } else {
           //validação dos campos de login sucedida
           let hashedPassword = await bcrypt.hash(usuario.password, 10);
@@ -61,7 +62,7 @@ class UsuarioController {
               }
               if (results.rows.length > 0) {
                 errors.push({ message: "email já registrado" });
-                res.render("pages/inscreva-se", { errors });
+                res.render("pages/inscreva-se", {"errors": errors,"usuario":null });
               } else {
                 pool.query(
                   //usuario valido insere no banco de dados

@@ -5,7 +5,7 @@ import session from "express-session";
 import flash from "express-flash";
 import passport from "passport";
 import { initialize as initializePassport } from "./passportConfig";
-import { RepublicaController,Republica } from "./controllers/RepublicaController";
+import { RepublicaController } from "./controllers/RepublicaController";
 import { UsuarioController } from "./controllers/UsuarioController";
 import { checkAuth, checkNotAuth } from "./middleware";
 
