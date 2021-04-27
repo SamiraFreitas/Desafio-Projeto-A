@@ -1,7 +1,7 @@
 import {Request,Response} from "express";
 import { Pool } from "pg";
 import bcrypt from "bcrypt";
-const PORT = process.env.PORT || 5000;
+import {v4 as uuid} from "uuid";
 
 
 class UsuarioController {
@@ -66,10 +66,10 @@ class UsuarioController {
               } else {
                 pool.query(
                   //usuario valido insere no banco de dados
-                  `INSERT INTO usuarios (nome_usuario,email,senha)
-                    VALUES ($1,$2,$3)
-                    RETURNING id,senha`,
-                  [usuario.name, usuario.email, hashedPassword],
+                  `INSERT INTO usuarios (id_user,nome_usuario,email,senha)
+                    VALUES ($1,$2,$3,$4)
+                    RETURNING id_user,senha`,
+                  [uuid(),usuario.name, usuario.email, hashedPassword],
                   (err, results) => {
                     if (err) {
                       throw err;

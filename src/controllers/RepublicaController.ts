@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { Pool } from "pg";
-
+import {v4 as uuid} from "uuid";
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: {
@@ -11,30 +11,30 @@ const pool = new Pool({
 interface Republica {
   nome_republica: string;
   rua: string;
+  numero: number;
   bairro: string;
   cidade: string;
-  trote: boolean;
-  n_quartos: number;
-  n_banheiros: number;
-  n_suites: number;
-  area_de_estudos: boolean;
-  wifi: number;
-  tv_a_cabo: boolean;
+  whatsapp: string;
   video_game: string;
-  numero: number;
+  n_quartos: number;
+  n_suites: number;
+  n_banheiros: number;
+  wifi: number;
+  trote: boolean;
+  area_de_estudos: boolean;
+  tv_a_cabo: boolean;
   area_externa: boolean;
   piscina: boolean;
   faxineira: boolean;
   almoco_diario: boolean;
   garagem: boolean;
   animais: boolean;
-  whatsapp: string;
   img: string;
 }
 
 class RepublicaController {
 
-
+  
    async renderizaRep(req:Request, res:Response){
      try{      
         const client = await pool.connect(); //conecta o banco de dados
@@ -59,8 +59,8 @@ class RepublicaController {
       const result: any = await client.query(
         //retorna a republica cadastrada pelo usuario logado
         `SELECT * FROM republicas 
-        WHERE id=$1`,
-        [usuario.id]
+        WHERE id_user=$1`,
+        [usuario.id_user]
       );
 
       if (result.rows.length > 0) {
@@ -76,35 +76,33 @@ class RepublicaController {
           console.log("estou aqui", rep.whatsapp.toString().length);
           await client.query(
             `INSERT INTO republicas 
-                    VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26)
-                    RETURNING id`,
+                    VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24)
+                    RETURNING id_rep`,
             [
-              usuario.id,
+              uuid(),
               rep.nome_republica,
               rep.rua,
               rep.numero,
               rep.bairro,
               rep.cidade,
-              rep.trote,
-              rep.n_quartos,
-              rep.n_banheiros,
-              rep.n_suites,
-              rep.area_de_estudos,
-              rep.wifi,
-              rep.tv_a_cabo,
+              rep.whatsapp,
               rep.video_game,
+              rep.n_quartos,
+              rep.n_suites,
+              rep.n_banheiros,
+              rep.wifi,
+              rep.trote,
+              rep.area_de_estudos,
+              rep.tv_a_cabo,
               rep.area_externa,
               rep.piscina,
               rep.faxineira,
               rep.almoco_diario,
               rep.garagem,
               rep.animais,
-              rep.whatsapp,
-              usuario.email,
-              usuario.id,
-              usuario.nome_usuario,
               true,
               rep.img,
+              usuario.id_user,
             ]
           );
         }
