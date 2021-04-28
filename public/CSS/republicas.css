@@ -69,3 +69,15 @@ html, body, #home{
  
     }
     
+    .card{
+        margin-top: 10px;
+    }
+
+    .card:hover{
+        transform: scale(1.05);
+        transition: 0.2s all cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+
+    .card:hover::before{
+        opacity: 5;
+    }

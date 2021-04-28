@@ -48,6 +48,14 @@ html, body, #home{
     line-height: 52px; 
     color: white;
     }
+
+    h2{
+        font-family: 'Mansalva', cursive;
+    }
+    h5{
+        font-family: 'Mansalva', cursive;
+    }
+    
     #quemsomos{
     background: #7B2CBF;
   
@@ -79,10 +87,6 @@ html, body, #home{
         color: #FF8500;
         font-size: 35px;
     }
-    .card-subtitle{
-        font-size: 20px;
-    }
-    
     .card-subtitle{
         font-size: 20px;
     }
