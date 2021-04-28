@@ -81,3 +81,13 @@ nav.navbar-transparente{
   background-color: #240046;
   color: aliceblue;
 }
+
+a{
+  color: #FF8500;
+}
+a:link{
+  text-decoration: none;
+}
+a:hover{
+  color: #240046;
+}
