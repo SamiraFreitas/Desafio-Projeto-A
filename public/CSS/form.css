@@ -63,8 +63,46 @@ html, body, #home{
     }
     
     #form{
-        border: 1px solid red;
+        /*border: 1px solid rgb(245, 228, 228);*/
         color: white;
         padding: 10px;
         padding-bottom: 10px;
+        font-family: 'Mansalva', cursive;
     }
+
+
+
+
+    /*CheckBox*/
+    /*.form-check{
+        border: red;
+        border-style: solid;
+    }*/
+
+    .form-check-input{
+        margin-left: 20px;
+        font-size:  100px;
+        transform: scale(1.3);
+        
+    }
+
+    .form-check-label{
+        margin-left: 35px;
+    }
+
+
+
+
+    /*Botao do submit*/
+    .botao{
+        width: 100%;
+        background-color: #3C096C;
+        color: #9D4EDD;
+        margin-top: 5px;
+        font-family: 'Mansalva', cursive;
+      }
+      
+      .botao:hover{
+        background-color: aliceblue;
+        color: #240046;
+      }

@@ -10,7 +10,7 @@
   <%- include ("../partials/nav.ejs") %>
 
 
-<h2  style="color: white;" class="text-center">Olá! <%= usuario.nome_usuario.charAt(0).toUpperCase()+ usuario.nome_usuario.slice(1) %></h2>
+<h2  style="color: white;margin-top: 20px;" class="text-center">Olá! <%= usuario.nome_usuario.charAt(0).toUpperCase()+ usuario.nome_usuario.slice(1) %></h2>
 
  <!-- Inicio da seção Form-->
  <section >
@@ -20,7 +20,7 @@
           <div class="col-md-12 ">
               <div class=" text-light ">
                   
-                  <h5 style="color: #FF8500;">Preencha os campos abaixo</h5>
+                  <h5 style="color: #FF8500;text-align: center;">Preencha os campos abaixo</h5>
                 
               </div>
           </div>
@@ -62,41 +62,41 @@
         <div class="form-row">
           <div class="form-group col-md-4">
             <label for="inputEmail4">Nome Republica</label>
-            <input type="text" class="form-control" id="inputEmail4" placeholder="Nome Republica" name="nome_republica" required>
+            <input type="text" class="form-control" id="inputEmail4" name="nome_republica" required>
           </div>
           <div class="form-group col-md-4">
             <label for="rua">Rua</label>
-            <input type="text" class="form-control" id="rua" placeholder="Rua" name="rua" required>
+            <input type="text" class="form-control" id="rua" name="rua" required>
           </div>
           <div class="form-group col-md-4">
             <label for="numero">Numero</label>
-            <input type="number" class="form-control" id="numero" placeholder="Numero" name="numero" required>
+            <input type="number" class="form-control" id="numero" name="numero" required>
           </div>
         </div>
         
         <div class="form-row">
           <div class="form-group col-md-4">
             <label for="inputEmail4">Bairro</label>
-            <input type="text" class="form-control" id="inputEmail4" placeholder="bairro" name="bairro" required>
+            <input type="text" class="form-control" id="inputEmail4" name="bairro" required>
           </div>
           <div class="form-group col-md-4">
             <label for="rua">Cidade</label>
-            <input type="text" class="form-control" id="cidade" placeholder="Cidade" name="cidade" required>
+            <input type="text" class="form-control" id="cidade" name="cidade" required>
           </div>
           <div class="form-group col-md-4">
             <label for="numero">Numero de quartos</label>
-            <input type="number" class="form-control" id="n_quartos" placeholder="numero quartos" name="n_quartos" required>
+            <input type="number" class="form-control" id="n_quartos" name="n_quartos" required>
           </div>
         </div>
         
         <div class="form-row">
           <div class="form-group col-md-4">
             <label for="n_banheiros">Numero de Banheiros</label>
-            <input type="number" class="form-control" id="n_banheiros" placeholder="n_banheiros" name="n_banheiros" required>
+            <input type="number" class="form-control" id="n_banheiros" name="n_banheiros" required>
           </div>
           <div class="form-group col-md-4">
             <label for="n_suites">Numero de Suites</label>
-            <input type="number" class="form-control" id="n_suites" placeholder="n_suites" name="n_suites" required>
+            <input type="number" class="form-control" id="n_suites" name="n_suites" required>
           </div>
           <div class="form-group col-md-4">
             <label for="video_game">Gênero</label>
@@ -110,15 +110,24 @@
         <div class="form-row">
           <div class="form-group col-md-4">
             <label for="wifi">Velocidade Wifi</label>
-            <input type="number" class="form-control" id="wifi" placeholder="velocidade wifi" name="wifi" required>
+            <input type="number" class="form-control" id="wifi" name="wifi" required>
           </div>
           <div class="form-group col-md-4">
+            <!--Inports para a mascara do telefone-->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
             <label for="whatsapp">Numero Whatsapp</label>
-            <input type="text" class="form-control" id="n_suites" placeholder="5531987792589" name="whatsapp" required>
+            <input type="text" class="form-control" id="whatsapp" name="whatsapp" required>
+            <!--Mascara para o numero de telefone-->
+            <script type="text/javascript">
+              $ ("#whatsapp").mask("(00) 00000-0000");
+            </script>
+
           </div>
           <div class="form-group col-md-4">
             <label for="video_game">ID imagem Drive</label>
-            <input type="text" class="form-control" id="img" placeholder="img" name="img" required>
+            <input type="text" class="form-control" id="img" name="img" required>
           </div>
         </div>
         
@@ -138,11 +147,11 @@
             </label>
             <input class="form-check-input" type="checkbox" name="area_externa" id="area_externa">
             <label class="form-check-label" for="garagem">
-              area_externa
+              Area_externa
             </label>
             <input class="form-check-input" type="checkbox" name="piscina" id="piscina">
             <label class="form-check-label" for="piscina">
-              piscina
+              Piscina
             </label>
             <input class="form-check-input" type="checkbox" name="faxineira" id="faxineira">
             <label class="form-check-label" for="faxineira">
@@ -162,7 +171,9 @@
             </label>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary">Salvar</button>
+        <div class="md-12">
+          <button type="submit" class="btn botao">Salvar</button>
+        </div>
       </form>
       <% } %>
        </div>
