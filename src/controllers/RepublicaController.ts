@@ -21,7 +21,7 @@ interface Republica {
   n_banheiros: number;
   wifi: number;
   trote: boolean;
-  area_de_estudos: boolean;
+  area_estudos: boolean;
   tv_a_cabo: boolean;
   area_externa: boolean;
   piscina: boolean;
@@ -51,9 +51,7 @@ class RepublicaController {
     };
  async create(req: Request, res: Response) {
     const usuario: any = req.user ? req.user : null;
-    const rep: Republica = req.body;
-    console.log(usuario);
-    console.log(rep.sexo);
+    let rep: Republica = req.body; 
     try {
       const client = await pool.connect(); //conecta o banco de dados
       const result: any = await client.query(
@@ -72,8 +70,8 @@ class RepublicaController {
         //se não estiver cadastrada
 
         if (rep.img != null) {
+          rep.whatsapp!=null?rep.whatsapp="55"+rep.whatsapp.replace(/\D/g, ""):null;
           //verifica se o formulário foi enviado se sim cadastra a republica
-          console.log("estou aqui", rep.whatsapp.toString().length);
           await client.query(
             `INSERT INTO republicas 
                     VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24)
@@ -92,7 +90,7 @@ class RepublicaController {
               rep.n_banheiros,
               rep.wifi,
               rep.trote,
-              rep.area_de_estudos,
+              rep.area_estudos,
               rep.tv_a_cabo,
               rep.area_externa,
               rep.piscina,

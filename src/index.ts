@@ -32,8 +32,6 @@ app.use(express.urlencoded({ extended: false }));
   
 app.get("/", usuarioController.mostraIndex); //renderiza a página home
 
-
-
 app.get("/login", checkAuth, usuarioController.mostraLogin); //renderiza página login
 
 app.post("/login",
@@ -41,8 +39,7 @@ passport.authenticate("local", {
   successRedirect: "/db",
   failureRedirect: "/login",
   failureFlash: true,
-})
-);
+}));
 
 app.get("/inscreva-se", checkAuth,usuarioController.mostraInscreva); //renderiza página escreva
 
@@ -50,12 +47,9 @@ app.post("/inscreva-se",usuarioController.inscreve);
 
 app.get("/logout", usuarioController.logout);
 
-
-
 app.get("/republicas", republicaController.renderizaRep);
 
-//página usuario/cadastro da republica
-app.get("/db",
+app.get("/db",//página usuario/cadastro da republica
 checkNotAuth, //verifica se o usuario esta deslogado ao tentar entrar na pagina do usuario
 republicaController.create
 );

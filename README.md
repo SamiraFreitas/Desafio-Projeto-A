@@ -16,6 +16,11 @@ Este repositório é referente ao projeto de desenvolvimento web para a Visão T
 
 
   ---
+Html
+Bootstrap
+Node.js
+PostgreSQL
+Typescript
 ## 💻 Como baixar o projeto 
 
 ---
