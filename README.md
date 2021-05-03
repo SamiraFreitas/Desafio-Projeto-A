@@ -23,6 +23,9 @@ Este repositório é referente ao projeto de desenvolvimento web para a Visão T
 - PostgreSQL
 - Typescript
 ## 💻 Como baixar o projeto 
+´´´ bash
+
+´´´
 
 ---
 
