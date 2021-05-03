@@ -26,15 +26,14 @@ Este repositório é referente ao projeto de desenvolvimento web para a Visão T
 ## 💻 Como baixar o projeto 
 -Requisitos 
 
-Instalar node, npm/yarn, heroku e postgres (caso utilize um banco local)
+- Instalar node, npm/yarn, heroku e postgres (caso utilize um banco local)
 
-Baixe as tecnologias citadas a cima em seguida: 
-Configure o arquivo '.env'
+- Baixe as tecnologias citadas a cima em seguida: 
+- Configure o arquivo '.env'
 DATABASE_URL=`postgres://${User}:${Password}@${Host}:${Port}/${database}`
 //exemplo 
 DATABASE_URL=postgres://leo:123@localhost:5432/meudb
-Configure tabelas teste 
-execute o script sql que está na raiz do projeto para criar as tabelas básicas no seu banco PostgreeSQL 
+- Configure tabelas teste  execute o script sql que está na raiz do projeto para criar as tabelas básicas no seu banco PostgreeSQL 
 
 
 ```bash
@@ -43,7 +42,7 @@ $ git clone https://github.com/SamiraFreitas/Desafio-Projeto-A
 #Entrar no diretorio 
 $ cd Desafio-Projeto-A 
 # Instalar as dependências
-$ npm install” || “yarn install
+$ npm install || yarn install
 #Rode o projeto 
 $ heroku local
 #Acesse o site 
