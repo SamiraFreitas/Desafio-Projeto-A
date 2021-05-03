@@ -22,7 +22,7 @@ Este repositório é referente ao projeto de desenvolvimento web para a Visão T
 - [PostgreSQL](https://www.postgresql.org/download/)
 - Typescript
 - [Yarn](https://classic.yarnpkg.com/en/docs/install)
--[Heroku]( https://devcenter.heroku.com/articles/heroku-cli)
+- [Heroku]( https://devcenter.heroku.com/articles/heroku-cli)
 ## 💻 Como baixar o projeto 
 -Requisitos 
 
