@@ -17,7 +17,7 @@ Este repositório é referente ao projeto de desenvolvimento web para a Visão T
   ---
 - Html
 - CSS
-- Bootstrap
+- [Bootstrap](https://getbootstrap.com/)
 - [Node.js](https://nodejs.org/pt-br/download/)
 - [PostgreSQL](https://www.postgresql.org/download/)
 - Typescript
