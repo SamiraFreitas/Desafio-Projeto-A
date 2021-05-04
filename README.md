@@ -32,8 +32,10 @@ Este repositório é referente ao projeto de desenvolvimento web para a Visão T
 - Configure o arquivo '.env'
 
 -DATABASE_URL=`postgres://${User}:${Password}@${Host}:${Port}/${database}`
-//exemplo 
+-Exemplo 
+
 -DATABASE_URL=postgres://leo:123@localhost:5432/meudb
+
 - Configure tabelas teste  execute o script sql que está na raiz do projeto para criar as tabelas básicas no seu banco PostgreeSQL 
 
 
