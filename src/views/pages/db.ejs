@@ -30,40 +30,184 @@
           </div>
         </div>
         <br><br>
-
-        <div class="card">
-          <img class="card-img-top" src="https://drive.google.com/uc?id=<%= r.img %>">
-         
-          <div class="card-body">
-            
-            <h4 class="card-title">
-              <b><%= r.nome_republica %></b>
-            </h4>
-            
-            <h6 class="card-subtitle">
-              <b>Rua <%= r.rua %>, nº<%=  r.numero %>, <%= r.bairro %>, <%= r.cidade %>
-              <br> <%= r.sexo %></b>
-            </h6>
-            
-            <p class="card-text">
-              <br>
-              Area de Estudos <% if(r.area_estudos) { %> ✔ <% }else {%> ✘ <% } %>
-              Tv a Cabo <% if(r.tv_a_cabo) { %> ✔ <% }else {%> ✘ <% } %><br>
-              Area Externa <% if(r.area_externa) { %> ✔ <% }else {%> ✘ <% } %>
-              Piscina <% if(r.piscina) { %> ✔ <% }else {%> ✘ <% } %><br>
-              Faxineira <% if(r.faxineira) { %> ✔ <% }else {%> ✘ <% } %>
-              Almoço Diario <% if(r.almoco_diario) { %> ✔ <% }else {%> ✘ <% } %><br>
-              Garagem <% if(r.garagem) { %> ✔ <% }else {%> ✘ <% } %>
-              Animais <% if(r.animais) { %> ✔ <% }else {%> ✘ <% } %>
-              Trote <% if(r.trote) { %> ✔ <% }else {%> ✘ <% } %>
-            </p>
-            <a class="btn btn-outline-info" href="https://api.whatsapp.com/send?phone=<%= r.whatsapp %>">Editar</a>
-          </div>
-        </div>
-
-
-        <% }else{ %>
         
+        
+                  
+                <div class="card display-flex mx-auto w-50" id="cardsumir" >
+                  <img class="card-img-top" src="https://drive.google.com/uc?id=<%= r.img %>" style="width:100%;height:300px;">
+                 
+                  <div class="card-body">
+                    
+                    <h4 class="card-title">
+                      <b><%= r.nome_republica %></b>
+                    </h4>
+                    
+                    <h6 class="card-subtitle">
+                      <b>Rua <%= r.rua %>, nº<%=  r.numero %>, <%= r.bairro %>, <%= r.cidade %>
+                      <br> <%= r.sexo %></b>
+                    </h6>
+                    
+                    <p class="card-text">
+                      <br>
+                      Area de Estudos <% if(r.area_estudos) { %> ✔ <% }else {%> ✘ <% } %>
+                      Tv a Cabo <% if(r.tv_a_cabo) { %> ✔ <% }else {%> ✘ <% } %><br>
+                      Area Externa <% if(r.area_externa) { %> ✔ <% }else {%> ✘ <% } %>
+                      Piscina <% if(r.piscina) { %> ✔ <% }else {%> ✘ <% } %><br>
+                      Faxineira <% if(r.faxineira) { %> ✔ <% }else {%> ✘ <% } %>
+                      Almoço Diario <% if(r.almoco_diario) { %> ✔ <% }else {%> ✘ <% } %><br>
+                      Garagem <% if(r.garagem) { %> ✔ <% }else {%> ✘ <% } %>
+                      Animais <% if(r.animais) { %> ✔ <% }else {%> ✘ <% } %>
+                      Trote <% if(r.trote) { %> ✔ <% }else {%> ✘ <% } %>
+                    </p>
+                    <a class="btn btn-outline-info" id="oi">Editar</a>
+                  </div>
+                </div>
+                
+
+        <form id="formu" method="POST" action="/db" style=" display:none;">
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="inputEmail4">Nome Republica</label>
+              <input type="text" class="form-control" id="inputEmail4" name="nome_republica" required value="<%= r.nome_republica %>">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="rua">Rua</label>
+              <input type="text" class="form-control" id="rua" name="rua" required value="<%= r.rua %>">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="numero">Numero</label>
+              <input type="number" class="form-control" id="numero" name="numero" required value="<%=  r.numero %>">
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="inputEmail4">Bairro</label>
+              <input type="text" class="form-control" id="inputEmail4" name="bairro" required value="<%= r.bairro %>">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="rua">Cidade</label>
+              <input type="text" class="form-control" id="cidade" name="cidade" required value="<%= r.cidade %>">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="numero">Numero de quartos</label>
+              <input type="number" class="form-control" id="n_quartos" name="n_quartos" required value="<%= r.n_quartos %>"> 
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="n_banheiros">Numero de Banheiros</label>
+              <input type="number" class="form-control" id="n_banheiros" name="n_banheiros" required value="<%= r.n_banheiros %>">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="n_suites">Numero de Suites</label>
+              <input type="number" class="form-control" id="n_suites" name="n_suites" required value="<%= r.n_suites %>">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="video_game">Gênero</label>
+              <select type="select" class="form-control" id="sexo"  name="sexo" required value="<%= r.sexo %>" >
+                <option value="Masculina">Masculina</option>
+                <option value="Feminina">Feminina</option>
+                <option value="Mista">Mista</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="wifi">Velocidade Wifi</label>
+              <input type="number" class="form-control" id="wifi" name="wifi" required value="<%= r.wifi %>">
+            </div>
+            <div class="form-group col-md-4">
+              <!--Inports para a mascara do telefone-->
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+              <label for="whatsapp">Numero Whatsapp</label>
+              <input type="text" class="form-control" id="whatsapp" name="whatsapp" required value="<%= r.whatsapp %>">
+              <!--Mascara para o numero de telefone-->
+              <script type="text/javascript">
+                $ ("#whatsapp").mask("(00) 00000-0000");
+              </script>
+
+            </div>
+            <div class="form-group col-md-4">
+              <label for="video_game">ID imagem Drive</label>
+              <input type="text" class="form-control" id="img" name="img" required value="<%= r.img %>">
+            </div>
+          </div>
+
+
+          <div class="form-row "> 
+            <div class="form-group col-md-4">
+              <input class="form-check-input" type="checkbox" name="trote" id="trote" <% if(r.trote) { %>  checked <% } %>>
+              <label class="form-check-label" for="trote">
+                Trote
+              </label>
+              <input class="form-check-input" type="checkbox" name="area_estudos" id="area_estudos" <% if(r.area_estudos) { %>  checked <% } %>>
+              <label class="form-check-label" for="area_estudos">
+                Area de Estudos
+              </label>
+              <input class="form-check-input" type="checkbox" name="tv_a_cabo" id="tv_a_cabo" <% if(r.tv_a_cabo) { %>  checked <% } %>>
+              <label class="form-check-label" for="tv_a_cabo">
+                Tv a Cabo
+              </label>
+            </div>
+         
+
+        
+              <div class="form-group col-md-4">
+                <input class="form-check-input" type="checkbox" name="area_externa" id="area_externa" <% if(r.area_externa) { %>  checked <% } %>>
+              <label class="form-check-label" for="garagem">
+                Area_externa
+              </label>
+              <input class="form-check-input" type="checkbox" name="piscina" id="piscina" <% if(r.piscina) { %>  checked <% } %>>
+              <label class="form-check-label" for="piscina">
+                Piscina
+              </label>
+              <input class="form-check-input" type="checkbox" name="faxineira" id="faxineira" <% if(r.faxineira) { %>  checked <% } %>>
+              <label class="form-check-label" for="faxineira">
+                Faxineira
+              </label>
+                
+              </div>
+           
+
+             
+                <div class="form-group col-md-4">
+                  <input class="form-check-input" type="checkbox" name="almoco_diario" id="almoco_diario" <% if(r.almoco_diario) { %>  checked <% } %>>
+                  <label class="form-check-label" for="almoco_diario">
+                    Almoço Diario
+                  </label>
+                  <input class="form-check-input" type="checkbox" name="garagem" id="garagem" <% if(r.garagem) { %>  checked <% } %>>
+                  <label class="form-check-label" for="garagem">
+                    Garagem
+                  </label>
+                  <input class="form-check-input" type="checkbox" name="animais" id="animais" <% if(r.animais) { %>  checked <% } %>>
+                  <label class="form-check-label" for="animais">
+                    Animais
+                  </label>
+                </div>
+
+            </div>
+         
+          <div class="md-12">
+            <button type="submit" class="btn botao">Salvar</button>
+          </div>
+        </form>
+
+        <script src="jquery-3.5.1.min.js"></script>
+        
+        <script> $("#oi").click(function()
+        {
+          $("#formu").show() ; 
+          $("#cardsumir").hide();
+        }) 
+        </script>
+              
+        <% }else{ %>
+
+
           <div class="row ">
             <div class="col-md-12 ">
                 <div class=" text-light ">
@@ -147,9 +291,10 @@
               <input type="text" class="form-control" id="img" name="img" required>
             </div>
           </div>
-          
-          <div class="form-group">
-            <div class="form-check">
+
+
+          <div class="form-row "> 
+            <div class="form-group col-md-4">
               <input class="form-check-input" type="checkbox" name="trote" id="trote">
               <label class="form-check-label" for="trote">
                 Trote
@@ -162,7 +307,12 @@
               <label class="form-check-label" for="tv_a_cabo">
                 Tv a Cabo
               </label>
-              <input class="form-check-input" type="checkbox" name="area_externa" id="area_externa">
+            </div>
+         
+
+        
+              <div class="form-group col-md-4">
+                <input class="form-check-input" type="checkbox" name="area_externa" id="area_externa">
               <label class="form-check-label" for="garagem">
                 Area_externa
               </label>
@@ -174,20 +324,28 @@
               <label class="form-check-label" for="faxineira">
                 Faxineira
               </label>
-              <input class="form-check-input" type="checkbox" name="almoco_diario" id="almoco_diario">
-              <label class="form-check-label" for="almoco_diario">
-                Almoço Diario
-              </label>
-              <input class="form-check-input" type="checkbox" name="garagem" id="garagem">
-              <label class="form-check-label" for="garagem">
-                Garagem
-              </label>
-              <input class="form-check-input" type="checkbox" name="animais" id="animais">
-              <label class="form-check-label" for="animais">
-                Animais
-              </label>
+                
+              </div>
+           
+
+             
+                <div class="form-group col-md-4">
+                  <input class="form-check-input" type="checkbox" name="almoco_diario" id="almoco_diario">
+                  <label class="form-check-label" for="almoco_diario">
+                    Almoço Diario
+                  </label>
+                  <input class="form-check-input" type="checkbox" name="garagem" id="garagem">
+                  <label class="form-check-label" for="garagem">
+                    Garagem
+                  </label>
+                  <input class="form-check-input" type="checkbox" name="animais" id="animais">
+                  <label class="form-check-label" for="animais">
+                    Animais
+                  </label>
+                </div>
+
             </div>
-          </div>
+         
           <div class="md-12">
             <button type="submit" class="btn botao">Salvar</button>
           </div>
