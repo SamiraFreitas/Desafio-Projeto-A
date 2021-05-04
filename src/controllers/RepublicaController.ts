@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { Pool } from "pg";
-import {v4 as uuid} from "uuid";
+import { v4 as uuid } from "uuid";
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: {
@@ -33,25 +33,53 @@ interface Republica {
 }
 
 class RepublicaController {
+  async renderizaRep(req: Request, res: Response) {
+    try {
+      const client = await pool.connect(); //conecta o banco de dados
+      const result = await client.query("SELECT * FROM republicas"); //seleciona tudo da tabela de teste
+      const results: Republica[] = result ? result.rows : null;
 
-  
-   async renderizaRep(req:Request, res:Response){
-     try{      
-        const client = await pool.connect(); //conecta o banco de dados
-        const result = await client.query("SELECT * FROM republicas"); //seleciona tudo da tabela de teste
-        const results:Republica[] = result ? result.rows : null;
-        
-        client.release();
-        const usuario: any = req.user ? req.user : null;
-        return res.render("pages/republicas", { usuario: usuario,republicas: results}); //renderiza a página de republicas
- 
-      }catch(e){
-        console.error(e);
+      client.release();
+      const usuario: any = req.user ? req.user : null;
+      return res.render("pages/republicas", {
+        usuario: usuario,
+        republicas: results,
+      }); //renderiza a página de republicas
+    } catch (e) {
+      console.error(e);
+    }
+  }
+  async update(req: Request, res: Response){
+    try{
+      const usuario: any = req.user ? req.user : null;
+      const c = await pool.connect(); //conecta o banco de dados
+      const result: any = await c.query(
+        //retorna a republica cadastrada pelo usuario logado
+        `SELECT * FROM republicas 
+        WHERE id_user=$1`,
+        [usuario.id_user]
+      );
+      const republica: Republica = result.rows?result.rows[0]:null;
+      console.log(republica)
+    let rep: Republica = req.body;
+    rep.whatsapp = "55" + rep.whatsapp.replace(/\D/g, "");
+    const client = await pool.connect(); //conecta o banco de dados
+    for (var [key, value] of Object.entries(rep)) {
+      console.log(republica[key],value);
+      if (value!=republica[key]){
+         console.log(`UPDATE republicas SET ${key} = ${value} WHERE id_user = ${usuario.id_user}`);
+         await client.query(`UPDATE republicas SET ${key}=$1 WHERE id_user=$2`,[value,usuario.id_user]);
       }
-    };
- async create(req: Request, res: Response) {
+    }
+    client.release();
+    }catch (e) {
+      console.error(e);
+    }
+    res.redirect("/");
+  }
+  async create(req: Request, res: Response) {
     const usuario: any = req.user ? req.user : null;
-    let rep: Republica = req.body; 
+    let rep: Republica = req.body;
     try {
       const client = await pool.connect(); //conecta o banco de dados
       const result: any = await client.query(
@@ -70,7 +98,9 @@ class RepublicaController {
         //se não estiver cadastrada
 
         if (rep.img != null) {
-          rep.whatsapp!=null?rep.whatsapp="55"+rep.whatsapp.replace(/\D/g, ""):null;
+          rep.whatsapp != null
+            ? (rep.whatsapp = "55" + rep.whatsapp.replace(/\D/g, ""))
+            : null;
           //verifica se o formulário foi enviado se sim cadastra a republica
           await client.query(
             `INSERT INTO republicas 
@@ -114,4 +144,4 @@ class RepublicaController {
   }
 }
 
-export { RepublicaController ,Republica};
+export { RepublicaController, Republica };

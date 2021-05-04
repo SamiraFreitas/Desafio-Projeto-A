@@ -64,7 +64,7 @@
                 </div>
                 
 
-        <form id="formu" method="POST" action="/db" style=" display:none;">
+        <form id="formu" method="POST" action="/" style=" display:none;">
           <div class="form-row">
             <div class="form-group col-md-4">
               <label for="inputEmail4">Nome Republica</label>
@@ -124,7 +124,7 @@
               <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 
               <label for="whatsapp">Numero Whatsapp</label>
-              <input type="text" class="form-control" id="whatsapp" name="whatsapp" required value="<%= r.whatsapp %>">
+              <input type="text" class="form-control" id="whatsapp" name="whatsapp" required value="<%= r.whatsapp.substring(2) %>">
               <!--Mascara para o numero de telefone-->
               <script type="text/javascript">
                 $ ("#whatsapp").mask("(00) 00000-0000");

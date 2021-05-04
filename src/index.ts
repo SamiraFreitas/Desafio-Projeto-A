@@ -31,7 +31,7 @@ app.use(express.urlencoded({ extended: false }));
 
   
 app.get("/", usuarioController.mostraIndex); //renderiza a página home
-
+app.post("/",republicaController.update);//atualiza os dados da republica
 app.get("/login", checkAuth, usuarioController.mostraLogin); //renderiza página login
 
 app.post("/login",
