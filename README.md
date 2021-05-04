@@ -32,7 +32,8 @@ Este repositório é referente ao projeto de desenvolvimento web para a Visão T
 - Configure o arquivo '.env'
 
 -DATABASE_URL=`postgres://${User}:${Password}@${Host}:${Port}/${database}`
--Exemplo 
+- Exemplo
+ 
 
 -DATABASE_URL=postgres://leo:123@localhost:5432/meudb
 
