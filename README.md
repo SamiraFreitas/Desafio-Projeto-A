@@ -26,8 +26,6 @@ Este repositório é referente ao projeto de desenvolvimento web para a Visão T
 ## 💻 Como baixar o projeto 
 -Requisitos 
 
-- Instalar node, npm/yarn, heroku e postgres (caso utilize um banco local)
-
 - Baixe as tecnologias citadas a cima nos links e em seguida: 
 - Configure o arquivo '.env'
 DATABASE_URL=`postgres://${User}:${Password}@${Host}:${Port}/${database}`

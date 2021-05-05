@@ -25,7 +25,7 @@
         <div class="col-md-12 ">
 
           <br>
-          <h5 class="titulo" style="color: #FF8500;"> FIND YOUR REP <i class="fas fa-search" tyle="color: #FF8500;"></i>
+          <h5 class="titulo" style="color: #FF8500; font-size: 30px;"> FIND YOUR REP <i class="fas fa-search"></i>
           </h5>
           <br>
 
@@ -40,7 +40,9 @@
                       <%= r.nome_republica %>
                     </h4>
                     <h6 class="card-subtitle">
-                      <%= r.rua %> <%=  r.numero %> <%= r.bairro %><br> <%= r.cidade %> 
+                      <%= r.rua %> <%=  r.numero %> <%= r.bairro %><br>
+                      <%= r.cidade %> <br>
+                      <%= r.sexo %>
                     </h6>
                     <p class="card-text">
                       Area de Estudos <% if(r.area_estudos) { %> ✔ <% }else {%> ✘ <% } %>
