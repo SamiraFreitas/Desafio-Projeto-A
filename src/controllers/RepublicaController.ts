@@ -60,12 +60,11 @@ class RepublicaController {
         [usuario.id_user]
       );
       const republica: Republica = result.rows?result.rows[0]:null;
-      console.log(republica)
+
     let rep: Republica = req.body;
     rep.whatsapp = "55" + rep.whatsapp.replace(/\D/g, "");
     const client = await pool.connect(); //conecta o banco de dados
     for (var [key, value] of Object.entries(rep)) {
-      console.log(republica[key],value);
       if (value!=republica[key]){
          console.log(`UPDATE republicas SET ${key} = ${value} WHERE id_user = ${usuario.id_user}`);
          await client.query(`UPDATE republicas SET ${key}=$1 WHERE id_user=$2`,[value,usuario.id_user]);
