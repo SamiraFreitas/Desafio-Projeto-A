@@ -26,17 +26,11 @@ Este repositório é referente ao projeto de desenvolvimento web para a Visão T
 ## 💻 Como baixar o projeto 
 -Requisitos 
 
-- Instalar node, npm/yarn, heroku e postgres (caso utilize um banco local)
-
 - Baixe as tecnologias citadas a cima nos links e em seguida: 
 - Configure o arquivo '.env'
-
--DATABASE_URL=`postgres://${User}:${Password}@${Host}:${Port}/${database}`
-- Exemplo
- 
-
--DATABASE_URL=postgres://leo:123@localhost:5432/meudb
-
+DATABASE_URL=`postgres://${User}:${Password}@${Host}:${Port}/${database}`
+//exemplo 
+DATABASE_URL=postgres://leo:123@localhost:5432/meudb
 - Configure tabelas teste  execute o script sql que está na raiz do projeto para criar as tabelas básicas no seu banco PostgreeSQL 
 
 
@@ -54,4 +48,3 @@ $ localhost:5000/
 ```
 ---
 Desenvolvido 💚 por Samira, Leonardo, Filipe, Wendler, Vinicius 
-
