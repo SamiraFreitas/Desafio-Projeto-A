@@ -56,5 +56,5 @@ republicaController.create
 app.post("/db",
  republicaController.create
 );
-
+app.get("/delete",checkNotAuth,republicaController.deletaRepublica)
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));

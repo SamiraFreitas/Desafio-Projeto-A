@@ -33,6 +33,29 @@ interface Republica {
 }
 
 class RepublicaController {
+  async deletaRepublica(req: Request, res: Response){
+    const usuario: any = req.user ? req.user : null;
+    const client = await pool.connect(); //conecta o banco de dados
+    const result: any = await client.query(
+      //retorna a republica cadastrada pelo usuario logado
+      `SELECT * FROM republicas 
+      WHERE id_user=$1`,
+      [usuario.id_user]
+    );
+    if(result.rows.length>0){
+        await client.query(`
+        DELETE FROM republicas
+        WHERE id_user=$1
+        `,
+        [usuario.id_user]
+        );
+        client.release();
+        return res.redirect("/republicas");
+    }
+    client.release();
+    return res.redirect("/db");
+  }
+
   async renderizaRep(req: Request, res: Response) {
     try {
       const client = await pool.connect(); //conecta o banco de dados
