@@ -87,10 +87,15 @@ class RepublicaController {
     let rep: Republica = req.body;
     rep.whatsapp = "55" + rep.whatsapp.replace(/\D/g, "");
     const client = await pool.connect(); //conecta o banco de dados
-    for (var [key, value] of Object.entries(rep)) {
-      if (value!=republica[key]){
-         console.log(`UPDATE republicas SET ${key} = ${value} WHERE id_user = ${usuario.id_user}`);
-         await client.query(`UPDATE republicas SET ${key}=$1 WHERE id_user=$2`,[value,usuario.id_user]);
+    for (var [key, value] of Object.entries(republica)) {
+      if (value!=rep[key]){
+        
+          if(value==true&&rep[key]=="on")continue;
+          if(key=="id_rep")continue;
+          if(key=="id_user")continue;
+        console.log(value,rep[key])
+         console.log(`UPDATE republicas SET ${key} = ${rep[key]} WHERE id_user = ${usuario.id_user}`);
+         await client.query(`UPDATE republicas SET ${key}=$1 WHERE id_user=$2`,[rep[key],usuario.id_user]);
       }
     }
     client.release();
