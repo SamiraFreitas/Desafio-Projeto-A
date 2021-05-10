@@ -63,7 +63,7 @@
         <ul>
           <% if(typeof errors != "undefined"){ %>
             <% errors.forEach(error=>{ %>
-              <li><%= error.message %></li>
+              <p class="text-danger text-center"><%= error.message %></p>
             <% }) %>
           <% } %>
         </ul>

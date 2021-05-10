@@ -76,7 +76,7 @@ class UsuarioController {
                     }
                     //se o cadastro der certo redireciona pra pagina de login com a mensagem
                     client.release();
-                    req.flash("success_msg",usuario.name + " você está registrado, por favor faça login");
+                    req.flash("success_msg","Cadastro foi um Sucesso");
                     res.redirect("/login");
                   }
                 );
