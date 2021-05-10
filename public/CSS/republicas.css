@@ -85,9 +85,9 @@ html, body, #home{
 
     /*Barra de Pesquisa!*/
     #divBusca{
-        background-color:#FF8500;
+        background-color:blueviolet;
         border:solid 5px;
-        border-color: blueviolet;
+        border-color: #FF8500;
         border-radius:15px;
         width:300px;
       }
