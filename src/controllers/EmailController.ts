@@ -16,7 +16,7 @@ const transporter = nodemailer.createTransport({
 class EmailController{
      
       async run(req: Request, res: Response) {
-    
+        try{
         await transporter.sendMail({
           text: req.body.texto,
           subject: req.body.nome,
@@ -24,6 +24,10 @@ class EmailController{
           to: ["findyourrepublic@gmail.com", req.body.email],
         });
         res.redirect("/");
+      }catch (e) {
+        console.error(e);
+        res.redirect("/");
+      }
 }
 
  
