@@ -31,13 +31,46 @@
 
           <!--Campo de pesquisa-->
           <div>
-            <div id="divBusca">
-              <img src="search3.png" alt="" />
-              <input type="text" id="txtBusca" placeholder="Buscar..." />
-              <i class="fas fa-search" alt="Buscar..." id="btnBusca"></i>
-            </div>
+            <center>
+              <div id="divBusca">
+                <img src="search3.png" alt="" />
+                <input type="text" id="txtBusca" placeholder="Buscar..." />
+                <i class="fas fa-search" alt="Buscar..." id="btnBusca"></i>
+              </div>
+            </center>
           </div>
           <!--Fim do campo de pesquisa-->
+
+          <div class="row">
+            <div class="col-3">
+              <div class="form-group">
+                <label for="">Sexo</label>
+                <select class="form-control" name="sexo" id="">
+                  <option value="masculina">Masculina</option>
+                  <option value="feminina">Feminina</option>
+                  <option value="mista">Mista</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-3">
+
+            </div>
+            <div class="col-3">
+              asasas
+            </div>
+            <div class="col-3">
+              tyy
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-12">
+              <button class="btn btn-primary" id="aplicar_filtro">Aplicar Filtro</button>
+            </div>
+          </div>
+
+
 
           <div class="peruano">
             <div class="card-columns">
@@ -92,10 +125,20 @@
             </div>
           </div>
 
+
   </section>
   <!-- Fim da seção Home-->
 
   <%- include ("../partials/footer.ejs") %>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+                $('#aplicar_filtro').click( function() {
+                    alert( "oi" );
+                 });
+            })
+          </script>
+
 </body>
 
 </html>
