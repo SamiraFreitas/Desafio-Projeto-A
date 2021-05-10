@@ -100,7 +100,7 @@
       <div class="col-lg-5 mb-4">
   
         <!--Form with header-->
-        <div id="form"class="card">
+        <form id="form" method="POST" action="/email"class="card">
   
           <div class="card-body">
             <!--Header-->
@@ -113,30 +113,30 @@
             <!--Body-->
             <div class="md-form">
             <label for="form-name" style="color: white; ">Seu nome</label>
-              <input type="text" id="form-name" class="form-control">
+              <input type="text" name="nome"id="form-name" class="form-control">
             
             </div>
   
             <div class="md-form">
                 <label for="form-email" style="color: white;  ">Seu email</label>
-              <input type="text" id="form-email" class="form-control">
+              <input type="text" name="email"id="form-email" class="form-control">
             
             </div>
 
   
             <div class="md-form">
                 <label for="form-text" style= "color: white;  " > Mensagem </label>
-              <textarea id="form-text" class="form-control md-textarea" rows="3"></textarea>
+              <textarea id="form-text" name="texto"class="form-control md-textarea" rows="3"></textarea>
             
             </div>
   
             <div class="text-center mt-4">
-              <button class="btn btn-dark">Enviar </button>
+              <button class="btn btn-dark" type="submit">Enviar </button>
             </div>
   
           </div>
   
-        </div>
+        </form>
         <!--Form with header-->
   
       </div>

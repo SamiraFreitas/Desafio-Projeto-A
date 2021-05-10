@@ -1,36 +1,32 @@
 import nodemailer from "nodemailer";
-
-
+import {Request, Response} from "express";
+const transporter = nodemailer.createTransport({
+  host: process.env.HOST,
+  port: 587,
+  secure: false,
+  auth: {
+    user: process.env.USER,
+    pass: process.env.PASS,
+  },
+  tls: {
+    rejectUnauthorized: false,
+  },
+});
 
 class EmailController{
-     transporter = nodemailer.createTransport({
-        host: process.env.HOST,
-        port: 587,
-        secure: false,
-        auth: {
-          user: process.env.USER,
-          pass: process.env.PASS,
-        },
-        tls: {
-          rejectUnauthorized: false,
-        },
-      });
-      async run() {
+     
+      async run(req: Request, res: Response) {
     
-        await this.transporter.sendMail({
-          text: "Texto do E-mail",
-          subject: "Assunto do e-mail",
-          from: "Victor Moraes <victormoraesgs@gmail.com",
-          to: ["victormoraesgs@gmail.com", "victormoraesgs@hotmail.com"],
-          html: `
-          <html>
-          <body>
-            <strong>Conteúdo HTML</strong></br>Do E-mail
-          </body>
-        </html> 
-          `,
+        await transporter.sendMail({
+          text: req.body.texto,
+          subject: req.body.nome,
+          from: "findyourrepublic@gmail.com",
+          to: ["findyourrepublic@gmail.com", req.body.email],
         });
+        res.redirect("/");
 }
 
  
 }
+
+export {EmailController}
