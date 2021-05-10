@@ -46,9 +46,19 @@
                       <b>Rua <%= r.rua %>, nº<%=  r.numero %>, <%= r.bairro %>, <%= r.cidade %>
                       <br> <%= r.sexo %></b>
                     </h6>
-                    
+                   <br>
+
+                   <p>
+                   
+                    <b> <%=r.n_suites%>  <% if (r.n_suites ==1)  {%> Vaga <% }else {%> Vagas<% } %> | <%=r.n_banheiros %>  <% if (r.n_banheiros ==1)  {%> Banheiro <% }else {%> Banheiros<% } %>   |  <%=r.n_quartos%>  <% if (r.n_quartos==1)  {%> Quarto<% }else {%> Quartos<% } %> 
+                   </p>
+                 
+                   
+      
+                   
                     <p class="card-text">
                       <br>
+                      
                       Area de Estudos <% if(r.area_estudos) { %> ✔ <% }else {%> ✘ <% } %>
                       Tv a Cabo <% if(r.tv_a_cabo) { %> ✔ <% }else {%> ✘ <% } %><br>
                       Area Externa <% if(r.area_externa) { %> ✔ <% }else {%> ✘ <% } %>
@@ -284,7 +294,7 @@
               <input type="number" class="form-control" id="n_banheiros" name="n_banheiros" required>
             </div>
             <div class="form-group col-md-4">
-              <label for="n_suites">Numero de Suites</label>
+              <label for="n_suites">Numero de Vagas</label>
               <input type="number" class="form-control" id="n_suites" name="n_suites" required>
             </div>
             <div class="form-group col-md-4">
