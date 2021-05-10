@@ -82,3 +82,23 @@ html, body, #home{
     .card:hover::before{
         opacity: 5;
     }
+
+    /*Barra de Pesquisa!*/
+    #divBusca{
+        background-color:#FF8500;
+        border:solid 5px;
+        border-color: blueviolet;
+        border-radius:15px;
+        width:300px;
+      }
+      
+      #txtBusca{
+        float:center;
+        background-color:transparent;
+        /*padding-left:5px;*/
+        font-style:italic;
+        font-size:18px;
+        border:none;
+        height:32px;
+        width:260px;
+      }
