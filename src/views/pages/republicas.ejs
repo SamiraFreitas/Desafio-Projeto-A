@@ -3,8 +3,8 @@
 
 <head>
   <%- include ("../partials/header.ejs") %>
-  <title> FYREP - Republicas </title>
-  <link rel="stylesheet" type="text/css" href="CSS/republicas.css">
+    <title> FYREP - Republicas </title>
+    <link rel="stylesheet" type="text/css" href="CSS/republicas.css">
 
 </head>
 
@@ -29,41 +29,61 @@
           </h5>
           <br>
 
+          <!--Campo de pesquisa-->
+          <div>
+            <div id="divBusca">
+              <img src="search3.png" alt="" />
+              <input type="text" id="txtBusca" placeholder="Buscar..." />
+              <i class="fas fa-search" alt="Buscar..." id="btnBusca"></i>
+            </div>
+          </div>
+          <!--Fim do campo de pesquisa-->
+
           <div class="peruano">
             <div class="card-columns">
 
-              <% republicas.forEach(function(r) { if( r.status === false) return; %>
+              <% republicas.forEach(function(r) { if( r.status===false) return; %>
                 <div class="card">
-                  <img class="card-img-top" src="https://drive.google.com/uc?id=<%= r.img %>" style="width:100%;height:300px;">
+                  <img class="card-img-top" src="https://drive.google.com/uc?id=<%= r.img %>"
+                    style="width:100%;height:300px;">
                   <div class="card-body">
                     <h4 class="card-title">
                       <%= r.nome_republica %>
                     </h4>
                     <h6 class="card-subtitle">
                       <%= r.rua %> <br>
-                      <%=  r.numero %> <%= r.bairro %><br>
-                      <%= r.cidade %> <br>
-                      <%= r.sexo %>
+                        <%= r.numero %>
+                          <%= r.bairro %><br>
+                            <%= r.cidade %> <br>
+                              <%= r.sexo %>
                     </h6>
 
                     <p>
-                   
-                      <b> <%=r.n_suites%>  <% if (r.n_suites ==1)  {%> Vaga <% }else {%> Vagas<% } %> | <%=r.n_banheiros %>  <% if (r.n_banheiros ==1)  {%> Banheiro <% }else {%> Banheiros<% } %>   |  <%=r.n_quartos%>  <% if (r.n_quartos==1)  {%> Quarto<% }else {%> Quartos<% } %> <br>
-                        <b><%= r.wifi  %> mbps </b> 
-                     </p>
+
+                      <b>
+                        <%=r.n_suites%>
+                          <% if (r.n_suites==1) {%> Vaga <% }else {%> Vagas<% } %> | <%=r.n_banheiros %>
+                                  <% if (r.n_banheiros==1) {%> Banheiro <% }else {%> Banheiros<% } %> | <%=r.n_quartos%>
+                                          <% if (r.n_quartos==1) {%> Quarto<% }else {%> Quartos<% } %> <br>
+                                                <b>
+                                                  <%= r.wifi %> mbps
+                                                </b>
+                    </p>
 
                     <p class="card-text">
                       Area de Estudos <% if(r.area_estudos) { %> ✔ <% }else {%> ✘ <% } %>
-                      Tv a Cabo <% if(r.tv_a_cabo) { %> ✔ <% }else {%> ✘ <% } %><br>
-                      Area Externa <% if(r.area_externa) { %> ✔ <% }else {%> ✘ <% } %>
-                      Piscina <% if(r.piscina) { %> ✔ <% }else {%> ✘ <% } %><br>
-                      Faxineira <% if(r.faxineira) { %> ✔ <% }else {%> ✘ <% } %>
-                      Almoço Diario <% if(r.almoco_diario) { %> ✔ <% }else {%> ✘ <% } %><br>
-                      Garagem <% if(r.garagem) { %> ✔ <% }else {%> ✘ <% } %>
-                      Animais <% if(r.animais) { %> ✔ <% }else {%> ✘ <% } %>
-                      Trote <% if(r.trote) { %> ✔ <% }else {%> ✘ <% } %>
+                            Tv a Cabo <% if(r.tv_a_cabo) { %> ✔ <% }else {%> ✘ <% } %><br>
+                                  Area Externa <% if(r.area_externa) { %> ✔ <% }else {%> ✘ <% } %>
+                                        Piscina <% if(r.piscina) { %> ✔ <% }else {%> ✘ <% } %><br>
+                                              Faxineira <% if(r.faxineira) { %> ✔ <% }else {%> ✘ <% } %>
+                                                    Almoço Diario <% if(r.almoco_diario) { %> ✔ <% }else {%> ✘ <% } %>
+                                                          <br>
+                                                          Garagem <% if(r.garagem) { %> ✔ <% }else {%> ✘ <% } %>
+                                                                Animais <% if(r.animais) { %> ✔ <% }else {%> ✘ <% } %>
+                                                                      Trote <% if(r.trote) { %> ✔ <% }else {%> ✘ <% } %>
                     </p>
-                    <a class="btn btn-outline-info" href="https://api.whatsapp.com/send?phone=<%= r.whatsapp %>">Whatsapp</a>
+                    <a class="btn btn-outline-info"
+                      href="https://api.whatsapp.com/send?phone=<%= r.whatsapp %>">Whatsapp</a>
                   </div>
                 </div>
 
