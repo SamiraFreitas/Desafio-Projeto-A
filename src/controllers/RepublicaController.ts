@@ -161,10 +161,12 @@ class RepublicaController {
               usuario.id_user,
             ]
           );
+          client.release();
+          return res.redirect("/db");
         }
       }
       const results = result ? result.rows[0] : null;
-      client.release();
+      await client.release();
       return res.render("pages/db", { usuario: usuario, r: results });
     } catch (e) {
       console.log(e);
