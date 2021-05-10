@@ -12,6 +12,8 @@ Este repositório é referente ao projeto de desenvolvimento web para a Visão T
            Valorizamos a diversidade;
            Facilidade e precisão;
 
+- [Link do site](http://fyrp.herokuapp.com/)
+
 ---
 ## 👾 Tecnologias Utilizadas 
   ---
