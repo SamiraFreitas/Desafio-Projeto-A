@@ -45,6 +45,12 @@
                       <%= r.cidade %> <br>
                       <%= r.sexo %>
                     </h6>
+
+                    <p>
+                   
+                      <b> <%=r.n_suites%>  <% if (r.n_suites ==1)  {%> Vaga <% }else {%> Vagas<% } %> | <%=r.n_banheiros %>  <% if (r.n_banheiros ==1)  {%> Banheiro <% }else {%> Banheiros<% } %>   |  <%=r.n_quartos%>  <% if (r.n_quartos==1)  {%> Quarto<% }else {%> Quartos<% } %> 
+                     </p>
+
                     <p class="card-text">
                       Area de Estudos <% if(r.area_estudos) { %> ✔ <% }else {%> ✘ <% } %>
                       Tv a Cabo <% if(r.tv_a_cabo) { %> ✔ <% }else {%> ✘ <% } %><br>
