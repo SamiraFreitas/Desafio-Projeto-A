@@ -39,6 +39,9 @@ html, body, #home{
     .capa{
     text-align: center;
     }
+    .faleconosco{
+        margin: 15px 15px;
+    }
     /* Fontes adicionais*/
     @font-face {
     font-family: Mansalva;
@@ -53,16 +56,50 @@ html, body, #home{
     }
     #quemsomos{
     background: #7B2CBF;
+    margin: 15px 15px;
   
     }
 
     #contquemsomos{
         padding-top: 1%; 
-        padding-bottom: 4%;       
+        padding-bottom: 4%;     
+          
         }
 
     #rodape{
     background: #240046;
+    font-size:12px;
     }
     
-    
+    #caixa {
+        background: #7B2CBF;
+        padding: 10;
+        margin: 15px 15px;
+    }
+    .map-container-6{
+        
+        overflow:hidden;
+        padding-bottom:56.25%;
+        position:relative;
+        height:0;
+        }
+        .map-container-6 iframe{
+        left:0;
+        top:0;
+        height:100%;
+        width:100%;
+        position:absolute;
+        }
+        #form{
+            background:#3C096C;
+             padding: 10;
+             margin: 15px 15px;
+             padding-top: 20px;
+           
+        }
+        #mapa{
+           
+            padding: 10;
+            margin: 15px 15px;
+            padding-top: 20px;
+        }
