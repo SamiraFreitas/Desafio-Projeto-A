@@ -60,10 +60,34 @@
                       Trote <% if(r.trote) { %> ✔ <% }else {%> ✘ <% } %>
                     </p>
                     <a class="btn btn-outline-info" id="oi">Editar</a>
+                    <a class="btn btn-outline-danger " data-toggle="modal" data-target="#exampleModal" id="oii">Deletar</a>
                   </div>
                 </div>
               </div>
-                
+
+ <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
         <form id="formu" method="POST" action="/" style=" display:none;">
           <div class="form-row">
@@ -205,6 +229,7 @@
           $("#cardsumir").hide();
         }) 
         </script>
+       
               
         <% }else{ %>
 
