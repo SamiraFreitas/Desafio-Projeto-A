@@ -42,6 +42,7 @@
               <div class="form-group">
                 <label for="" style="color: #FF8500;">Filtrar república por sexo</label>
                 <select class="form-control" name="sexo" id="">
+                  <option value="todas">Todas as repúblicas</option>
                   <option value="masculina">Masculina</option>
                   <option value="feminina">Feminina</option>
                   <option value="mista">Mista</option>
@@ -49,13 +50,13 @@
               </div>
             </div>
           </div>
-
+<!--
           <div class="row">
             <div class="col-12">
               <button class="btn btn-primary" id="aplicar_filtro">Aplicar Filtro</button>
-              <button class="btn btn-primary" id="limpar_filtro" onclick="clearfilter()">Limpar Filtro</button>
+              <button class="btn btn-primary" id="limpar_filtro" onclick="clearfilter()">Todos</button>
             </div>
-          </div>
+          </div>-->
 
           <div class="peruano">
             <div class="card-columns">
@@ -116,6 +117,22 @@
     <!--Inicio Script-->
     <script type="text/javascript">
       $(document).ready(function () {
+        $("[name='sexo']").change(function(){
+          clearfilter()
+          var sexo_selecionado = $("[name='sexo']").find(":selected").val()
+          var todas_reps = $(".card_rep")
+          if(sexo_selecionado == "todas"){
+            clearfilter()
+            return;
+          }
+          for (let index = 0; index < todas_reps.length; index++) {
+            const element = todas_reps[index];
+            var subtitulo = $(element).children(".card-body").children(".card-subtitle").html()
+            if (!subtitulo.replace("<br>", "").toLowerCase().includes(sexo_selecionado)) {
+              $(element).hide()
+            }
+          }
+        })
         $('#aplicar_filtro').click(function () {
           clearfilter()
           var sexo_selecionado = $("[name='sexo']").find(":selected").val()
