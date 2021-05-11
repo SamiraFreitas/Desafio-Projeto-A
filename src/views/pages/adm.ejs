@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+  <head>
+    <%- include ("../partials/header.ejs") %>
+    <link rel="stylesheet" type="text/css" href="CSS/signin.css">
+    <title>FYREP - Login</title>
+  </head>
+
+<body>
+  <!-- Inicio do Cabecalho-->
+  <header>
+    <%- include ("../partials/nav.ejs") %>
+  </header>
+<form method="POST" action="/adm">
+  <!-- Fim do Cabecalho-->
+<ul style="color:white;" name="republicas">
+  <% republicas.forEach(function(r) {  %>
+    <li>Nome: <%= r.nome_republica %> | <select name="status" ><% if(r.status==true) { %> 
+        <option value="true" selected>true</option>
+        <option value="false">false</option>
+        <% }else { %>
+        <option value="true" >true</option>
+        <option value="false" selected>false</option>
+        <% } %>
+        </select><br><input name="id_rep" value="<%= r.id_rep %>" readonly></input> </li>
+    <% }); %>
+</ul>
+<button class="btn btn-primary" type="submit">Salvar</button>
+</form>
+  <%- include ("../partials/footer.ejs") %>
+</body>
+
+</html>
