@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
   <%- include ("../partials/header.ejs") %>
-  <title> FYREP - Republicas </title>
-  <link rel="stylesheet" type="text/css" href="CSS/republicas.css">
-
+    <title> FYREP - Republicas </title>
+    <link rel="stylesheet" type="text/css" href="CSS/republicas.css">
 </head>
-
 <body>
-
   <!-- Inicio do Cabeçalho-->
   <header>
     <%- include ("../partials/nav.ejs") %>
@@ -29,45 +25,152 @@
           </h5>
           <br>
 
+          <!--Campo de pesquisa-->
+          <!--<div>
+            <center>
+              <div id="divBusca">
+                <img src="search3.png" alt="" />
+                <input type="text" id="txtBusca" placeholder="Buscar..." />
+                <i class="fas fa-search" alt="Buscar..." id="btnBusca"></i>
+              </div>
+            </center>
+          </div>-->
+          <!--Fim do campo de pesquisa-->
+
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group">
+                <label for="" style="color: #FF8500;">Filtrar república por sexo</label>
+                <select class="form-control" name="sexo" id="">
+                  <option value="todas">Todas as repúblicas</option>
+                  <option value="masculina">Masculina</option>
+                  <option value="feminina">Feminina</option>
+                  <option value="mista">Mista</option>
+                </select>
+              </div>
+            </div>
+          </div>
+<!--
+          <div class="row">
+            <div class="col-12">
+              <button class="btn btn-primary" id="aplicar_filtro">Aplicar Filtro</button>
+              <button class="btn btn-primary" id="limpar_filtro" onclick="clearfilter()">Todos</button>
+            </div>
+          </div>-->
+
           <div class="peruano">
             <div class="card-columns">
 
-              <% republicas.forEach(function(r) { if( r.status === false) return; %>
-                <div class="card">
-                  <img class="card-img-top" src="https://drive.google.com/uc?id=<%= r.img %>" style="width:100%;height:300px;">
+              <% republicas.forEach(function(r) { if( r.status===false) return; %>
+                <div class="card card_rep">
+                  <img class="card-img-top" src="https://drive.google.com/uc?id=<%= r.img %>"
+                    style="width:100%;height:300px;">
                   <div class="card-body">
                     <h4 class="card-title">
                       <%= r.nome_republica %>
                     </h4>
                     <h6 class="card-subtitle">
-                      <%= r.rua %> <%=  r.numero %> <%= r.bairro %><br>
-                      <%= r.cidade %> <br>
-                      <%= r.sexo %>
+                      <div class="rua">
+                        <%= r.rua %> <br>
+                      </div>
+                      <%= r.numero %>
+                        <%= r.bairro %><br>
+                          <%= r.cidade %> <br>
+                            <%= r.sexo %>
                     </h6>
+
+                    <p class="info">
+
+                      <b>
+                        <%=r.n_suites%>
+                          <% if (r.n_suites==1) {%> Vaga <% }else {%> Vagas<% } %> | <%=r.n_banheiros %>
+                                  <% if (r.n_banheiros==1) {%> Banheiro <% }else {%> Banheiros<% } %> | <%=r.n_quartos%>
+                                          <% if (r.n_quartos==1) {%> Quarto<% }else {%> Quartos<% } %> <br>
+                                                <b>
+                                                  <%= r.wifi %> mbps
+                                                </b>
+                    </p>
+
                     <p class="card-text">
                       Area de Estudos <% if(r.area_estudos) { %> ✔ <% }else {%> ✘ <% } %>
-                      Tv a Cabo <% if(r.tv_a_cabo) { %> ✔ <% }else {%> ✘ <% } %><br>
-                      Area Externa <% if(r.area_externa) { %> ✔ <% }else {%> ✘ <% } %>
-                      Piscina <% if(r.piscina) { %> ✔ <% }else {%> ✘ <% } %><br>
-                      Faxineira <% if(r.faxineira) { %> ✔ <% }else {%> ✘ <% } %>
-                      Almoço Diario <% if(r.almoco_diario) { %> ✔ <% }else {%> ✘ <% } %><br>
-                      Garagem <% if(r.garagem) { %> ✔ <% }else {%> ✘ <% } %>
-                      Animais <% if(r.animais) { %> ✔ <% }else {%> ✘ <% } %>
-                      Trote <% if(r.trote) { %> ✔ <% }else {%> ✘ <% } %>
+                            Tv a Cabo <% if(r.tv_a_cabo) { %> ✔ <% }else {%> ✘ <% } %><br>
+                                  Area Externa <% if(r.area_externa) { %> ✔ <% }else {%> ✘ <% } %>
+                                        Piscina <% if(r.piscina) { %> ✔ <% }else {%> ✘ <% } %><br>
+                                              Faxineira <% if(r.faxineira) { %> ✔ <% }else {%> ✘ <% } %>
+                                                    Almoço Diario <% if(r.almoco_diario) { %> ✔ <% }else {%> ✘ <% } %>
+                                                          <br>
+                                                          Garagem <% if(r.garagem) { %> ✔ <% }else {%> ✘ <% } %>
+                                                                Animais <% if(r.animais) { %> ✔ <% }else {%> ✘ <% } %>
+                                                                      Trote <% if(r.trote) { %> ✔ <% }else {%> ✘ <% } %>
                     </p>
-                    <a class="btn btn-outline-info" href="https://api.whatsapp.com/send?phone=<%= r.whatsapp %>">Whatsapp</a>
+                    <a class="btn btn-outline-info"
+                      href="https://api.whatsapp.com/send?phone=<%= r.whatsapp %>">Whatsapp</a>
                   </div>
                 </div>
-
-
                 <% }); %>
             </div>
           </div>
-
   </section>
   <!-- Fim da seção Home-->
-
   <%- include ("../partials/footer.ejs") %>
-</body>
 
+    <!--Inicio Script-->
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $("[name='sexo']").change(function(){
+          clearfilter()
+          var sexo_selecionado = $("[name='sexo']").find(":selected").val()
+          var todas_reps = $(".card_rep")
+          if(sexo_selecionado == "todas"){
+            clearfilter()
+            return;
+          }
+          for (let index = 0; index < todas_reps.length; index++) {
+            const element = todas_reps[index];
+            var subtitulo = $(element).children(".card-body").children(".card-subtitle").html()
+            if (!subtitulo.replace("<br>", "").toLowerCase().includes(sexo_selecionado)) {
+              $(element).hide()
+            }
+          }
+        })
+        $('#aplicar_filtro').click(function () {
+          clearfilter()
+          var sexo_selecionado = $("[name='sexo']").find(":selected").val()
+          var todas_reps = $(".card_rep")
+          for (let index = 0; index < todas_reps.length; index++) {
+            const element = todas_reps[index];
+            var subtitulo = $(element).children(".card-body").children(".card-subtitle").html()
+            if (!subtitulo.replace("<br>", "").toLowerCase().includes(sexo_selecionado)) {
+              $(element).hide()
+            }
+          }
+          if (qnt_quartos != 0) {
+            for (let index = 0; index < todas_reps.length; index++) {
+              const element = todas_reps[index];
+              var quant_quartos = $(element).children(".card-body").children(".info").children().text()
+              if (qnt_quartos == 1) {
+                var aux = "1 quarto"
+              } else {
+                var aux = `${qnt_quartos} quartos`
+              }
+              console.log(aux)
+              //console.log($(element).children(".card-body").children(".info"))
+              if (!quant_quartos.replace("<br>", "").replace("\n\n", "").toLowerCase().includes(aux)) {
+                $(element).hide()
+              }
+              console.log(quant_quartos.replace("<br>", "").replace("\n", "").toLowerCase())
+            }
+          }
+        });
+      })
+      function clearfilter() {
+        var todas_reps = $(".card_rep")
+        for (let index = 0; index < todas_reps.length; index++) {
+          const element = todas_reps[index];
+          $(element).show()
+        }
+      }
+    </script>
+    <!--Fim Script-->
+</body>
 </html>

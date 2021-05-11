@@ -7,10 +7,12 @@ import passport from "passport";
 import { initialize as initializePassport } from "./passportConfig";
 import { RepublicaController } from "./controllers/RepublicaController";
 import { UsuarioController } from "./controllers/UsuarioController";
+import { EmailController } from "./controllers/EmailController";
 import { checkAuth, checkNotAuth } from "./middleware";
 
 const app = express();
 const republicaController = new RepublicaController();
+const emailController = new EmailController();
 const usuarioController = new UsuarioController();
 
 initializePassport(passport); //inicia o passport com a config
@@ -32,6 +34,7 @@ app.use(express.urlencoded({ extended: false }));
   
 app.get("/", usuarioController.mostraIndex); //renderiza a página home
 app.post("/",republicaController.update);//atualiza os dados da republica
+app.post("/email",emailController.run);//atualiza os dados da republica
 app.get("/login", checkAuth, usuarioController.mostraLogin); //renderiza página login
 
 app.post("/login",
@@ -56,5 +59,5 @@ republicaController.create
 app.post("/db",
  republicaController.create
 );
-
+app.get("/delete",checkNotAuth,republicaController.deletaRepublica)
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));

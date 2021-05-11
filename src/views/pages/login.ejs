@@ -23,17 +23,16 @@
           <h3 class="h3 mb-3 font-weight-normal" style="color: #FF9E00">
             Fazer login
           </h3>
-          <ul><!--MENSAGENS DE SUCESSO NO LOGIN-->
+          
             <% if(messages.success_msg){ %>
-                <li><%= messages.success_msg %></li>
+                <p class="text-success"><%= messages.success_msg %></p>
             <% } %>
-          </ul>
-          <ul><!--MENSAGENS DE ERRO NO LOGIN-->
+  
+        <!--MENSAGENS DE ERRO NO LOGIN-->
             <% if(messages.error){ %>
-                <li><%= messages.error %></li>
+                <p class="text-danger"><%= messages.error %></p>
             <% } %>
-            
-          </ul>
+
           <label for="inputEmail" class="sr-only">
             E-mail
           </label>

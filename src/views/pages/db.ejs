@@ -46,9 +46,20 @@
                       <b>Rua <%= r.rua %>, nº<%=  r.numero %>, <%= r.bairro %>, <%= r.cidade %>
                       <br> <%= r.sexo %></b>
                     </h6>
-                    
+                   <br>
+
+                   <p>
+                   
+                    <b> <%=r.n_suites%>  <% if (r.n_suites ==1)  {%> Vaga <% }else {%> Vagas<% } %> | <%=r.n_banheiros %>  <% if (r.n_banheiros ==1)  {%> Banheiro <% }else {%> Banheiros<% } %>   |  <%=r.n_quartos%>  <% if (r.n_quartos==1)  {%> Quarto<% }else {%> Quartos<% } %> <br>
+                     <b><%= r.wifi  %> mbps </b> 
+                   </p>
+                 
+                   
+      
+                   
                     <p class="card-text">
                       <br>
+                      
                       Area de Estudos <% if(r.area_estudos) { %> ✔ <% }else {%> ✘ <% } %>
                       Tv a Cabo <% if(r.tv_a_cabo) { %> ✔ <% }else {%> ✘ <% } %><br>
                       Area Externa <% if(r.area_externa) { %> ✔ <% }else {%> ✘ <% } %>
@@ -60,10 +71,36 @@
                       Trote <% if(r.trote) { %> ✔ <% }else {%> ✘ <% } %>
                     </p>
                     <a class="btn btn-outline-info" id="oi">Editar</a>
+                    <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Deletar</a>
                   </div>
                 </div>
               </div>
-                
+
+ <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Alerta</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Deseja excluir os dados da sua república ? 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        <a href="delete " class="btn btn-primary "> Confirmar </a>
+       
+      </div>
+    </div>
+  </div>
+</div>
+
 
         <form id="formu" method="POST" action="/" style=" display:none;">
           <div class="form-row">
@@ -102,7 +139,7 @@
               <input type="number" class="form-control" id="n_banheiros" name="n_banheiros" required value="<%= r.n_banheiros %>">
             </div>
             <div class="form-group col-md-4">
-              <label for="n_suites">Numero de Suites</label>
+              <label for="n_suites">Numero de Vagas</label>
               <input type="number" class="form-control" id="n_suites" name="n_suites" required value="<%= r.n_suites %>">
             </div>
             <div class="form-group col-md-4">
@@ -191,7 +228,7 @@
                 </div>
 
             </div>
-         
+          
           <div class="md-12">
             <button type="submit" class="btn botao">Salvar</button>
           </div>
@@ -205,6 +242,7 @@
           $("#cardsumir").hide();
         }) 
         </script>
+       
               
         <% }else{ %>
 
@@ -257,7 +295,7 @@
               <input type="number" class="form-control" id="n_banheiros" name="n_banheiros" required>
             </div>
             <div class="form-group col-md-4">
-              <label for="n_suites">Numero de Suites</label>
+              <label for="n_suites">Numero de Vagas</label>
               <input type="number" class="form-control" id="n_suites" name="n_suites" required>
             </div>
             <div class="form-group col-md-4">
@@ -348,6 +386,10 @@
             </div>
          
           <div class="md-12">
+            <p></br>Para mantermos o nosso site em funcionamento, cobramos um valor de 10 reais semestrais para que sua república
+              seja exposta!</br> O pagamento é feito pelo pix, chave (findyourrepublic@gmail.com);</br>Caso for verificado que não foi 
+              realizado o pagamento, retiraremos sua república do catalogo !!</br>Favor enviar comprovante para o mesmo e-mail.
+            </p>
             <button type="submit" class="btn botao">Salvar</button>
           </div>
         </form>

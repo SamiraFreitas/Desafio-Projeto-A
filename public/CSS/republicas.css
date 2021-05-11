@@ -52,6 +52,7 @@ html, body, #home{
     
     #rodape{
     background: #240046;
+    margin-top: 100px;
     }
     
     .titulo{
@@ -81,3 +82,23 @@ html, body, #home{
     .card:hover::before{
         opacity: 5;
     }
+
+    /*Barra de Pesquisa!*/
+    #divBusca{
+        background-color:blueviolet;
+        border:solid 5px;
+        border-color: #FF8500;
+        border-radius:15px;
+        width:300px;
+      }
+      
+      #txtBusca{
+        float:center;
+        background-color:transparent;
+        padding-left:5px;
+        font-style:unset;
+        font-size:18px;
+        border:none;
+        height:32px;
+        width:260px;
+      }

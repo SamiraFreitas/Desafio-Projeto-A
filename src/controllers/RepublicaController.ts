@@ -33,6 +33,29 @@ interface Republica {
 }
 
 class RepublicaController {
+  async deletaRepublica(req: Request, res: Response){
+    const usuario: any = req.user ? req.user : null;
+    const client = await pool.connect(); //conecta o banco de dados
+    const result: any = await client.query(
+      //retorna a republica cadastrada pelo usuario logado
+      `SELECT * FROM republicas 
+      WHERE id_user=$1`,
+      [usuario.id_user]
+    );
+    if(result.rows.length>0){
+        await client.query(`
+        DELETE FROM republicas
+        WHERE id_user=$1
+        `,
+        [usuario.id_user]
+        );
+        client.release();
+        return res.redirect("/republicas");
+    }
+    client.release();
+    return res.redirect("/db");
+  }
+
   async renderizaRep(req: Request, res: Response) {
     try {
       const client = await pool.connect(); //conecta o banco de dados
@@ -64,10 +87,16 @@ class RepublicaController {
     let rep: Republica = req.body;
     rep.whatsapp = "55" + rep.whatsapp.replace(/\D/g, "");
     const client = await pool.connect(); //conecta o banco de dados
-    for (var [key, value] of Object.entries(rep)) {
-      if (value!=republica[key]){
-         console.log(`UPDATE republicas SET ${key} = ${value} WHERE id_user = ${usuario.id_user}`);
-         await client.query(`UPDATE republicas SET ${key}=$1 WHERE id_user=$2`,[value,usuario.id_user]);
+    for (var [key, value] of Object.entries(republica)) {
+      if (value!=rep[key]){
+          //chaves do banco que não devem ser modificadas
+          if(value==true&&rep[key]=="on")continue;//comparar se o valor é verdadeiro e a checkbox está marcada
+          if(key=="id_rep")continue;
+          if(key=="id_user")continue;
+          if(key=="status")continue;
+        console.log(value,rep[key])
+         console.log(`UPDATE republicas SET ${key} = ${rep[key]} WHERE id_user = ${usuario.id_user}`);
+         await client.query(`UPDATE republicas SET ${key}=$1 WHERE id_user=$2`,[rep[key],usuario.id_user]);
       }
     }
     client.release();
@@ -132,10 +161,12 @@ class RepublicaController {
               usuario.id_user,
             ]
           );
+          client.release();
+          return res.redirect("/db");
         }
       }
       const results = result ? result.rows[0] : null;
-      client.release();
+      await client.release();
       return res.render("pages/db", { usuario: usuario, r: results });
     } catch (e) {
       console.log(e);
