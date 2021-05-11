@@ -51,9 +51,12 @@ html, body, #home{
     }
     
     #rodape{
-    background: #240046;
-    margin-top: 100px;
-    }
+        background: #240046;
+        font-size:12px;
+        margin-top: 50px;
+        bottom:0;
+       
+        }
     
     .titulo{
     font-family: 'Mansalva', cursive;
