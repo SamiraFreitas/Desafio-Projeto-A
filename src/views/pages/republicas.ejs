@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
   <%- include ("../partials/header.ejs") %>
     <title> FYREP - Republicas </title>
     <link rel="stylesheet" type="text/css" href="CSS/republicas.css">
-
 </head>
-
 <body>
-
   <!-- Inicio do Cabeçalho-->
   <header>
     <%- include ("../partials/nav.ejs") %>
@@ -61,8 +57,6 @@
             </div>
           </div>
 
-
-
           <div class="peruano">
             <div class="card-columns">
 
@@ -112,17 +106,12 @@
                       href="https://api.whatsapp.com/send?phone=<%= r.whatsapp %>">Whatsapp</a>
                   </div>
                 </div>
-
-
                 <% }); %>
             </div>
           </div>
-
-
   </section>
   <!-- Fim da seção Home-->
   <%- include ("../partials/footer.ejs") %>
-
 
     <!--Inicio Script-->
     <script type="text/javascript">
@@ -138,7 +127,6 @@
               $(element).hide()
             }
           }
-
           if (qnt_quartos != 0) {
             for (let index = 0; index < todas_reps.length; index++) {
               const element = todas_reps[index];
@@ -167,7 +155,5 @@
       }
     </script>
     <!--Fim Script-->
-
 </body>
-
 </html>
