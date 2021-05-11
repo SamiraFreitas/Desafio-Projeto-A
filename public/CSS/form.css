@@ -66,10 +66,13 @@ html, body, #home{
         padding-bottom: 4%;       
         }
 
-    #rodape{
-    background: #240046;
-    margin-top: 50px;
-    }
+        #rodape{
+            background: #240046;
+            font-size:12px;
+            margin-top: 50px;
+            bottom:0;
+          
+            }
     
 
 
