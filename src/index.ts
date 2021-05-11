@@ -8,12 +8,15 @@ import { initialize as initializePassport } from "./passportConfig";
 import { RepublicaController } from "./controllers/RepublicaController";
 import { UsuarioController } from "./controllers/UsuarioController";
 import { EmailController } from "./controllers/EmailController";
-import { checkAuth, checkNotAuth } from "./middleware";
+import { AdminController } from "./controllers/adminController";
+import { checkAuth, checkNotAuth, checkAdm } from "./middleware";
+
 
 const app = express();
 const republicaController = new RepublicaController();
 const emailController = new EmailController();
 const usuarioController = new UsuarioController();
+const adminController = new AdminController();
 
 initializePassport(passport); //inicia o passport com a config
 
@@ -36,7 +39,8 @@ app.get("/", usuarioController.mostraIndex); //renderiza a página home
 app.post("/",republicaController.update);//atualiza os dados da republica
 app.post("/email",emailController.run);//atualiza os dados da republica
 app.get("/login", checkAuth, usuarioController.mostraLogin); //renderiza página login
-
+app.get("/adm",checkNotAuth,checkAdm,adminController.renderADM)
+app.post("/adm",checkNotAuth,checkAdm,adminController.attStatus)
 app.post("/login",
 passport.authenticate("local", {
   successRedirect: "/db",
