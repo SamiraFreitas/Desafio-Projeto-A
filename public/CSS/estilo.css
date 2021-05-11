@@ -9,6 +9,8 @@ html, body, #home{
     background: url(../Imagens/foto-oficial.jpg);
     background-color: #240046;
     background-repeat: no-repeat;
+    background-size: auto;
+    background-size: cover;
     }
     
     /* Barra de navegacao */
@@ -66,11 +68,13 @@ html, body, #home{
           
         }
 
-    #rodape{
-    background: #240046;
-    font-size:12px;
-    margin-top: 50px;
-    }
+        #rodape{
+            background: #240046;
+            font-size:12px;
+            margin-top: 50px;
+            bottom:0;
+           
+            }
     
     #caixa {
         background: #7B2CBF;
