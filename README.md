@@ -26,7 +26,7 @@ Este repositório é referente ao projeto de desenvolvimento web para a Visão T
 ## 💻 Como baixar o projeto 
 -Requisitos 
 
-- Baixe as tecnologias citadas a cima nos links e em seguida: 
+- Baixe as tecnologias citadas acima nos links e em seguida: 
 - Configure o arquivo '.env'
 DATABASE_URL=`postgres://${User}:${Password}@${Host}:${Port}/${database}`
 //exemplo 
