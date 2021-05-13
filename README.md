@@ -1,7 +1,7 @@
 ## 📜 Índice
 - [📜 Índice](#-índice)
 - [📝 Sobre](#-sobre)
-- [ 👾 Tecnologias Utilizadas](#--tecnologias-utilizadas)
+- [👾 Tecnologias Utilizadas](#--tecnologias-utilizadas)
 - [💻 Como baixar o projeto](#-como-baixar-o-projeto)
 
 ## 📝 Sobre 
