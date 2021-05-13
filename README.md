@@ -1,7 +1,7 @@
 ## 📜 Índice
 - [📜 Índice](#-índice)
 - [📝 Sobre](#-sobre)
-- [👾 Tecnologias Utilizadas](#-tecnologias-utilizadas)
+- [## 👾 Tecnologias Utilizadas](#--tecnologias-utilizadas)
 - [💻 Como baixar o projeto](#-como-baixar-o-projeto)
 
 ## 📝 Sobre 
@@ -26,7 +26,7 @@ Este repositório é referente ao projeto de desenvolvimento web para a Visão T
 ## 💻 Como baixar o projeto 
 -Requisitos 
 
-- Baixe as tecnologias citadas a cima nos links e em seguida: 
+- Baixe as tecnologias citadas acima nos links e em seguida: 
 - Configure o arquivo '.env'
 DATABASE_URL=`postgres://${User}:${Password}@${Host}:${Port}/${database}`
 //exemplo 
@@ -47,4 +47,4 @@ $ heroku local
 $ localhost:5000/
 ```
 ---
-Desenvolvido 💚 por Samira, Leonardo, Filipe, Wendler, Vinicius 
+Desenvolvido 💚 por Samira, Leonardo, Filipe, Wendler
