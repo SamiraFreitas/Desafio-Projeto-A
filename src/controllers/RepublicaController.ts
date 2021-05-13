@@ -156,7 +156,7 @@ class RepublicaController {
               rep.almoco_diario,
               rep.garagem,
               rep.animais,
-              true,
+              false,
               rep.img,
               usuario.id_user,
             ]

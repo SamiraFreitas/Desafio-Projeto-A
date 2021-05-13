@@ -8,26 +8,54 @@
   </head>
 
 <body>
+
+  
   <!-- Inicio do Cabecalho-->
   <header>
     <%- include ("../partials/nav.ejs") %>
   </header>
+
+  <div class="col-md-12 ">
+
+    <br>
+    <h5 class="titulo text-center " style="color: #FF8500; font-size: 30px;"> Pagina do Administrador  <i class="fas fa-search"></i>
+    </h5>
+    <br>
+
+  <div class="container ">
 <form method="POST" action="/adm">
   <!-- Fim do Cabecalho-->
-<ul style="color:white;" name="republicas">
-  <% republicas.forEach(function(r) {  %>
-    <li>Nome: <%= r.nome_republica %> | <select name="status" ><% if(r.status==true) { %> 
+<table class="table table-bordered"style="color:white;" name="republicas">
+  <thead>
+  <tr class="d-flex">
+    <th class="col-4" scope="col">Nome</th>
+    <th class="col-4" scope="col">Status</th>
+    <th class="col-4" scope="col">ID</th>
+  </tr>
+</thead>
+<tbody>
+    <% republicas.forEach(function(r) {  %>
+    <tr  class="d-flex"> 
+      <td class="col-4"><%= r.nome_republica %></td> 
+      <td class="col-4"> <select name="status" ><% if(r.status==true) { %> 
         <option value="true" selected>true</option>
         <option value="false">false</option>
         <% }else { %>
         <option value="true" >true</option>
         <option value="false" selected>false</option>
         <% } %>
-        </select><br><input name="id_rep" style="visibility:hidden;" value="<%= r.id_rep %>" readonly></input> </li>
+        </select></td>
+        <td class="col-4"><input name="id_rep"  value="<%= r.id_rep %>" readonly></input></td>
+       </tr>
     <% }); %>
-</ul>
-<button class="btn btn-primary" type="submit">Salvar</button>
+  </tbody>
+
+  </table>
+  <div class="text-center">
+<button class="btn botao" type="submit">Salvar</button>
+</div>
 </form>
+</div>
   <%- include ("../partials/footer.ejs") %>
 </body>
 
