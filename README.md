@@ -47,4 +47,4 @@ $ heroku local
 $ localhost:5000/
 ```
 ---
-Desenvolvido 💚 por Samira, Leonardo, Filipe, Wendler
+Desenvolvido 💚 por [Samira](https://github.com/SamiraFreitas), [Leonardo](https://github.com/LeoMoreiraS), [Filipe](https://github.com/FilipeLipe), [Wendler](https://github.com/Alochio)
