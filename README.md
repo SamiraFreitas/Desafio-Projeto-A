@@ -16,9 +16,8 @@ Este repositório é referente ao projeto de desenvolvimento web para a Visão T
 
 - [Link do site](http://fyrp.herokuapp.com/)
 
----
 ## 👾 Tecnologias Utilizadas 
-  ---
+ 
 - Html
 - CSS
 - Bootstrap
@@ -50,5 +49,4 @@ $ heroku local
 #Acesse o site 
 $ localhost:5000/
 ```
----
 Desenvolvido 💚 por [Samira](https://github.com/SamiraFreitas), [Leonardo](https://github.com/LeoMoreiraS), [Filipe](https://github.com/FilipeLipe), [Wendler](https://github.com/WendlerQueiroz)
