@@ -1,3 +1,6 @@
+
+- [Link do site](http://fyrp.herokuapp.com/)
+---
 ![Captura de tela de 2021-07-08 13-49-20](https://user-images.githubusercontent.com/73719899/124961058-62a59d80-dff3-11eb-9ca7-69594dc5ad96.png)
 
 ## 📜 Índice
@@ -13,8 +16,6 @@ Este repositório é referente ao projeto de desenvolvimento web para a Visão T
 - Valores: Utilizar a tecnologia para unir as pessoas;
            Valorizamos a diversidade;
            Facilidade e precisão;
-
-- [Link do site](http://fyrp.herokuapp.com/)
 
 ## 👾 Tecnologias Utilizadas 
  
